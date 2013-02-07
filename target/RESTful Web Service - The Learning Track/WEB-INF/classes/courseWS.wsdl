@@ -1,0 +1,2746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://course.ws.blackboard/" xmlns:ns2="http://course.ws.blackboard" xmlns:ns1="http://course.ws.blackboard/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.platform.blackboard/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://course.ws.blackboard/">
+    <wsdl:types>
+        <xs:schema xmlns:ax29="http://ws.platform.blackboard/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.platform.blackboard/xsd">
+            <xs:complexType name="VersionVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="version" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax210="http://course.ws.blackboard/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://course.ws.blackboard/xsd">
+            <xs:complexType name="CartridgeVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="identifier" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="publisherName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CategoryMembershipFilter">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="filterType" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="templateCategoryMembership" nillable="true" type="ax210:CategoryMembershipVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CategoryMembershipVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="available" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="categoryId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dataSourceId" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="organization" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CategoryFilter">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="filterType" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="templateCategories" nillable="true" type="ax210:CategoryVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CategoryVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="available" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="batchUid" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dataSourceId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="frontPage" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="organization" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="parentId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="restricted" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ClassificationVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="batchUid" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dataSourceId" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="parentId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CourseFilter">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="available" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="batchUids" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="categoryIds" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="courseIds" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="courseTemplates" nillable="true" type="ax210:CourseVO"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="dataSourceIds" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="filterType" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="searchDate" nillable="true" type="xs:long"/>
+                    <xs:element minOccurs="0" name="searchDateOperator" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="searchKey" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="searchOperator" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="searchValue" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="sourceBatchUids" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="userIds" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CourseVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="allowGuests" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="allowObservers" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="available" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="batchUid" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="buttonStyleBbId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="buttonStyleShape" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="buttonStyleType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cartridgeId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="classificationId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="courseDuration" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="coursePace" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="courseServiceLevel" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dataSourceId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="decAbsoluteLimit" type="xs:long"/>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="endDate" type="xs:long"/>
+                    <xs:element minOccurs="0" name="enrollmentAccessCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="enrollmentEndDate" type="xs:long"/>
+                    <xs:element minOccurs="0" name="enrollmentStartDate" type="xs:long"/>
+                    <xs:element minOccurs="0" name="enrollmentType" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fee" type="xs:float"/>
+                    <xs:element minOccurs="0" name="hasDescriptionPage" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="institutionName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="locale" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="localeEnforced" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="lockedOut" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="navCollapsable" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="navColorBg" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="navColorFg" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="navigationStyle" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="numberOfDaysOfUse" type="xs:int"/>
+                    <xs:element minOccurs="0" name="organization" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="showInCatalog" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="softLimit" type="xs:long"/>
+                    <xs:element minOccurs="0" name="startDate" type="xs:long"/>
+                    <xs:element minOccurs="0" name="uploadLimit" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GroupFilter">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="available" type="xs:boolean"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="filterType" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="groupIds" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="userIds" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GroupVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="available" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="descriptionType" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="groupTools" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="StaffInfoVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="available" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="biography" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="biographyType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="familyName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="folder" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="givenName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="homePageUrl" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="officeAddress" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="officeHours" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="parentId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="persistentTitle" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="position" type="xs:int"/>
+                    <xs:element minOccurs="0" name="sirTitle" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="titleColor" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="TermVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="available" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="dataSrcId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="daysOfUse" type="xs:int"/>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="descriptionType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="duration" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="endDate" type="xs:long"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="sourcedidId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="sourcedidSource" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="startDate" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ns="http://course.ws.blackboard" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://course.ws.blackboard">
+            <xs:element name="getServerVersion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="unused" nillable="true" type="ns0:VersionVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getServerVersionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns0:VersionVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCartridge">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="cartridgeId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCartridgeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:CartridgeVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCourseCategoryMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="filter" nillable="true" type="ns1:CategoryMembershipFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCourseCategoryMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:CategoryMembershipVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOrgCategoryMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="filter" nillable="true" type="ns1:CategoryMembershipFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOrgCategoryMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:CategoryMembershipVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCategories">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="filter" nillable="true" type="ns1:CategoryFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCategoriesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:CategoryVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getClassifications">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="classificationIdMask" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getClassificationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:ClassificationVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCourse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="filter" nillable="true" type="ns1:CourseFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCourseResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:CourseVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOrg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="filter" nillable="true" type="ns1:CourseFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOrgResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:CourseVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadCoursesInTerm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="termID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadCoursesInTermResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:CourseVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="filter" nillable="true" type="ns1:GroupFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:GroupVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getStaffInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getStaffInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:StaffInfoVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadTerm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="termID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadTermResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:TermVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadTermByCourseId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadTermByCourseIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:TermVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadTerms">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="onlyAvailable" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadTermsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:TermVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadTermsByName">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadTermsByNameResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:TermVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addCourseToTerm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="termID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addCourseToTermResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeCourseBatchUid">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="oldBatchUid" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newBatchUid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeCourseBatchUidResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeCourseCategoryBatchUid">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="categoryId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newBatchUid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeCourseCategoryBatchUidResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeCourseDataSourceId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newDataSourceId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeCourseDataSourceIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeOrgBatchUid">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="oldBatchUid" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newBatchUid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeOrgBatchUidResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeOrgCategoryBatchUid">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="categoryId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newBatchUid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeOrgCategoryBatchUidResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeOrgDataSourceId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newDataSourceId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeOrgDataSourceIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteTerm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="termID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteTermResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initializeCourseWS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ignore" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initializeCourseWSResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeCourseFromTerm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeCourseFromTermResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="setCourseBannerImage">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="removeOnly" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="fileContents" nillable="true" type="xs:base64Binary"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="setCourseBannerImageResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createCourse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="c" nillable="true" type="ns1:CourseVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createCourseResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createOrg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="c" nillable="true" type="ns1:CourseVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createOrgResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCartridge">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="cartridgeId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCartridgeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCartridge">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="vo" nillable="true" type="ns1:CartridgeVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCartridgeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="c" nillable="true" type="ns1:CourseVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourseResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourseCategory">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="adminCategory" nillable="true" type="ns1:CategoryVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourseCategoryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourseCategoryMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="membership" nillable="true" type="ns1:CategoryMembershipVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourseCategoryMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="vo" nillable="true" type="ns1:GroupVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveGroupResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveOrgCategory">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="adminCategory" nillable="true" type="ns1:CategoryVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveOrgCategoryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveOrgCategoryMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="membership" nillable="true" type="ns1:CategoryMembershipVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveOrgCategoryMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveStaffInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="vo" nillable="true" type="ns1:StaffInfoVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveStaffInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveTerm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="termVo" nillable="true" type="ns1:TermVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveTermResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateCourse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="c" nillable="true" type="ns1:CourseVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateCourseResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateOrg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="c" nillable="true" type="ns1:CourseVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateOrgResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourseResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourseCategory">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="categoryIds" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourseCategoryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourseCategoryMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="categoryMembershipIds" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourseCategoryMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteGroupResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteOrg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteOrgResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteOrgCategory">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="categoryIds" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteOrgCategoryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteOrgCategoryMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="categoryMembershipIds" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteOrgCategoryMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteStaffInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="staffInfoIds" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteStaffInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAvailableGroupTools">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAvailableGroupToolsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getCategoriesRequest">
+        <wsdl:part name="parameters" element="ns2:getCategories"/>
+    </wsdl:message>
+    <wsdl:message name="getCategoriesResponse">
+        <wsdl:part name="parameters" element="ns2:getCategoriesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCourseRequest">
+        <wsdl:part name="parameters" element="ns2:getCourse"/>
+    </wsdl:message>
+    <wsdl:message name="getCourseResponse">
+        <wsdl:part name="parameters" element="ns2:getCourseResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createCourseRequest">
+        <wsdl:part name="parameters" element="ns2:createCourse"/>
+    </wsdl:message>
+    <wsdl:message name="createCourseResponse">
+        <wsdl:part name="parameters" element="ns2:createCourseResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteOrgRequest">
+        <wsdl:part name="parameters" element="ns2:deleteOrg"/>
+    </wsdl:message>
+    <wsdl:message name="deleteOrgResponse">
+        <wsdl:part name="parameters" element="ns2:deleteOrgResponse"/>
+    </wsdl:message>
+    <wsdl:message name="changeOrgBatchUidRequest">
+        <wsdl:part name="parameters" element="ns2:changeOrgBatchUid"/>
+    </wsdl:message>
+    <wsdl:message name="changeOrgBatchUidResponse">
+        <wsdl:part name="parameters" element="ns2:changeOrgBatchUidResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseCategoryRequest">
+        <wsdl:part name="parameters" element="ns2:saveCourseCategory"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseCategoryResponse">
+        <wsdl:part name="parameters" element="ns2:saveCourseCategoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveGroupRequest">
+        <wsdl:part name="parameters" element="ns2:saveGroup"/>
+    </wsdl:message>
+    <wsdl:message name="saveGroupResponse">
+        <wsdl:part name="parameters" element="ns2:saveGroupResponse"/>
+    </wsdl:message>
+    <wsdl:message name="removeCourseFromTermRequest">
+        <wsdl:part name="parameters" element="ns2:removeCourseFromTerm"/>
+    </wsdl:message>
+    <wsdl:message name="removeCourseFromTermResponse">
+        <wsdl:part name="parameters" element="ns2:removeCourseFromTermResponse"/>
+    </wsdl:message>
+    <wsdl:message name="loadTermsByNameRequest">
+        <wsdl:part name="parameters" element="ns2:loadTermsByName"/>
+    </wsdl:message>
+    <wsdl:message name="loadTermsByNameResponse">
+        <wsdl:part name="parameters" element="ns2:loadTermsByNameResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getGroupRequest">
+        <wsdl:part name="parameters" element="ns2:getGroup"/>
+    </wsdl:message>
+    <wsdl:message name="getGroupResponse">
+        <wsdl:part name="parameters" element="ns2:getGroupResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseCategoryMembershipRequest">
+        <wsdl:part name="parameters" element="ns2:deleteCourseCategoryMembership"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseCategoryMembershipResponse">
+        <wsdl:part name="parameters" element="ns2:deleteCourseCategoryMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveTermRequest">
+        <wsdl:part name="parameters" element="ns2:saveTerm"/>
+    </wsdl:message>
+    <wsdl:message name="saveTermResponse">
+        <wsdl:part name="parameters" element="ns2:saveTermResponse"/>
+    </wsdl:message>
+    <wsdl:message name="loadCoursesInTermRequest">
+        <wsdl:part name="parameters" element="ns2:loadCoursesInTerm"/>
+    </wsdl:message>
+    <wsdl:message name="loadCoursesInTermResponse">
+        <wsdl:part name="parameters" element="ns2:loadCoursesInTermResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseRequest">
+        <wsdl:part name="parameters" element="ns2:deleteCourse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseResponse">
+        <wsdl:part name="parameters" element="ns2:deleteCourseResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createOrgRequest">
+        <wsdl:part name="parameters" element="ns2:createOrg"/>
+    </wsdl:message>
+    <wsdl:message name="createOrgResponse">
+        <wsdl:part name="parameters" element="ns2:createOrgResponse"/>
+    </wsdl:message>
+    <wsdl:message name="changeOrgCategoryBatchUidRequest">
+        <wsdl:part name="parameters" element="ns2:changeOrgCategoryBatchUid"/>
+    </wsdl:message>
+    <wsdl:message name="changeOrgCategoryBatchUidResponse">
+        <wsdl:part name="parameters" element="ns2:changeOrgCategoryBatchUidResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteOrgCategoryMembershipRequest">
+        <wsdl:part name="parameters" element="ns2:deleteOrgCategoryMembership"/>
+    </wsdl:message>
+    <wsdl:message name="deleteOrgCategoryMembershipResponse">
+        <wsdl:part name="parameters" element="ns2:deleteOrgCategoryMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getClassificationsRequest">
+        <wsdl:part name="parameters" element="ns2:getClassifications"/>
+    </wsdl:message>
+    <wsdl:message name="getClassificationsResponse">
+        <wsdl:part name="parameters" element="ns2:getClassificationsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getOrgRequest">
+        <wsdl:part name="parameters" element="ns2:getOrg"/>
+    </wsdl:message>
+    <wsdl:message name="getOrgResponse">
+        <wsdl:part name="parameters" element="ns2:getOrgResponse"/>
+    </wsdl:message>
+    <wsdl:message name="updateOrgRequest">
+        <wsdl:part name="parameters" element="ns2:updateOrg"/>
+    </wsdl:message>
+    <wsdl:message name="updateOrgResponse">
+        <wsdl:part name="parameters" element="ns2:updateOrgResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getOrgCategoryMembershipRequest">
+        <wsdl:part name="parameters" element="ns2:getOrgCategoryMembership"/>
+    </wsdl:message>
+    <wsdl:message name="getOrgCategoryMembershipResponse">
+        <wsdl:part name="parameters" element="ns2:getOrgCategoryMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteOrgCategoryRequest">
+        <wsdl:part name="parameters" element="ns2:deleteOrgCategory"/>
+    </wsdl:message>
+    <wsdl:message name="deleteOrgCategoryResponse">
+        <wsdl:part name="parameters" element="ns2:deleteOrgCategoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="changeCourseCategoryBatchUidRequest">
+        <wsdl:part name="parameters" element="ns2:changeCourseCategoryBatchUid"/>
+    </wsdl:message>
+    <wsdl:message name="changeCourseCategoryBatchUidResponse">
+        <wsdl:part name="parameters" element="ns2:changeCourseCategoryBatchUidResponse"/>
+    </wsdl:message>
+    <wsdl:message name="setCourseBannerImageRequest">
+        <wsdl:part name="parameters" element="ns2:setCourseBannerImage"/>
+    </wsdl:message>
+    <wsdl:message name="setCourseBannerImageResponse">
+        <wsdl:part name="parameters" element="ns2:setCourseBannerImageResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCartridgeRequest">
+        <wsdl:part name="parameters" element="ns2:getCartridge"/>
+    </wsdl:message>
+    <wsdl:message name="getCartridgeResponse">
+        <wsdl:part name="parameters" element="ns2:getCartridgeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="loadTermRequest">
+        <wsdl:part name="parameters" element="ns2:loadTerm"/>
+    </wsdl:message>
+    <wsdl:message name="loadTermResponse">
+        <wsdl:part name="parameters" element="ns2:loadTermResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseCategoryRequest">
+        <wsdl:part name="parameters" element="ns2:deleteCourseCategory"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseCategoryResponse">
+        <wsdl:part name="parameters" element="ns2:deleteCourseCategoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="changeOrgDataSourceIdRequest">
+        <wsdl:part name="parameters" element="ns2:changeOrgDataSourceId"/>
+    </wsdl:message>
+    <wsdl:message name="changeOrgDataSourceIdResponse">
+        <wsdl:part name="parameters" element="ns2:changeOrgDataSourceIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="initializeCourseWSRequest">
+        <wsdl:part name="parameters" element="ns2:initializeCourseWS"/>
+    </wsdl:message>
+    <wsdl:message name="initializeCourseWSResponse">
+        <wsdl:part name="parameters" element="ns2:initializeCourseWSResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCourseCategoryMembershipRequest">
+        <wsdl:part name="parameters" element="ns2:getCourseCategoryMembership"/>
+    </wsdl:message>
+    <wsdl:message name="getCourseCategoryMembershipResponse">
+        <wsdl:part name="parameters" element="ns2:getCourseCategoryMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="updateCourseRequest">
+        <wsdl:part name="parameters" element="ns2:updateCourse"/>
+    </wsdl:message>
+    <wsdl:message name="updateCourseResponse">
+        <wsdl:part name="parameters" element="ns2:updateCourseResponse"/>
+    </wsdl:message>
+    <wsdl:message name="loadTermByCourseIdRequest">
+        <wsdl:part name="parameters" element="ns2:loadTermByCourseId"/>
+    </wsdl:message>
+    <wsdl:message name="loadTermByCourseIdResponse">
+        <wsdl:part name="parameters" element="ns2:loadTermByCourseIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addCourseToTermRequest">
+        <wsdl:part name="parameters" element="ns2:addCourseToTerm"/>
+    </wsdl:message>
+    <wsdl:message name="addCourseToTermResponse">
+        <wsdl:part name="parameters" element="ns2:addCourseToTermResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAvailableGroupToolsRequest">
+        <wsdl:part name="parameters" element="ns2:getAvailableGroupTools"/>
+    </wsdl:message>
+    <wsdl:message name="getAvailableGroupToolsResponse">
+        <wsdl:part name="parameters" element="ns2:getAvailableGroupToolsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCartridgeRequest">
+        <wsdl:part name="parameters" element="ns2:deleteCartridge"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCartridgeResponse">
+        <wsdl:part name="parameters" element="ns2:deleteCartridgeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteStaffInfoRequest">
+        <wsdl:part name="parameters" element="ns2:deleteStaffInfo"/>
+    </wsdl:message>
+    <wsdl:message name="deleteStaffInfoResponse">
+        <wsdl:part name="parameters" element="ns2:deleteStaffInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveStaffInfoRequest">
+        <wsdl:part name="parameters" element="ns2:saveStaffInfo"/>
+    </wsdl:message>
+    <wsdl:message name="saveStaffInfoResponse">
+        <wsdl:part name="parameters" element="ns2:saveStaffInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveOrgCategoryRequest">
+        <wsdl:part name="parameters" element="ns2:saveOrgCategory"/>
+    </wsdl:message>
+    <wsdl:message name="saveOrgCategoryResponse">
+        <wsdl:part name="parameters" element="ns2:saveOrgCategoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteGroupRequest">
+        <wsdl:part name="parameters" element="ns2:deleteGroup"/>
+    </wsdl:message>
+    <wsdl:message name="deleteGroupResponse">
+        <wsdl:part name="parameters" element="ns2:deleteGroupResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getServerVersionRequest">
+        <wsdl:part name="parameters" element="ns2:getServerVersion"/>
+    </wsdl:message>
+    <wsdl:message name="getServerVersionResponse">
+        <wsdl:part name="parameters" element="ns2:getServerVersionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseRequest">
+        <wsdl:part name="parameters" element="ns2:saveCourse"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseResponse">
+        <wsdl:part name="parameters" element="ns2:saveCourseResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveCartridgeRequest">
+        <wsdl:part name="parameters" element="ns2:saveCartridge"/>
+    </wsdl:message>
+    <wsdl:message name="saveCartridgeResponse">
+        <wsdl:part name="parameters" element="ns2:saveCartridgeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveOrgCategoryMembershipRequest">
+        <wsdl:part name="parameters" element="ns2:saveOrgCategoryMembership"/>
+    </wsdl:message>
+    <wsdl:message name="saveOrgCategoryMembershipResponse">
+        <wsdl:part name="parameters" element="ns2:saveOrgCategoryMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getStaffInfoRequest">
+        <wsdl:part name="parameters" element="ns2:getStaffInfo"/>
+    </wsdl:message>
+    <wsdl:message name="getStaffInfoResponse">
+        <wsdl:part name="parameters" element="ns2:getStaffInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseCategoryMembershipRequest">
+        <wsdl:part name="parameters" element="ns2:saveCourseCategoryMembership"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseCategoryMembershipResponse">
+        <wsdl:part name="parameters" element="ns2:saveCourseCategoryMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="changeCourseBatchUidRequest">
+        <wsdl:part name="parameters" element="ns2:changeCourseBatchUid"/>
+    </wsdl:message>
+    <wsdl:message name="changeCourseBatchUidResponse">
+        <wsdl:part name="parameters" element="ns2:changeCourseBatchUidResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteTermRequest">
+        <wsdl:part name="parameters" element="ns2:deleteTerm"/>
+    </wsdl:message>
+    <wsdl:message name="deleteTermResponse">
+        <wsdl:part name="parameters" element="ns2:deleteTermResponse"/>
+    </wsdl:message>
+    <wsdl:message name="changeCourseDataSourceIdRequest">
+        <wsdl:part name="parameters" element="ns2:changeCourseDataSourceId"/>
+    </wsdl:message>
+    <wsdl:message name="changeCourseDataSourceIdResponse">
+        <wsdl:part name="parameters" element="ns2:changeCourseDataSourceIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="loadTermsRequest">
+        <wsdl:part name="parameters" element="ns2:loadTerms"/>
+    </wsdl:message>
+    <wsdl:message name="loadTermsResponse">
+        <wsdl:part name="parameters" element="ns2:loadTermsResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="Course.WSPortType">
+        <wsdl:operation name="getCategories">
+            <wsdl:input message="axis2:getCategoriesRequest" wsaw:Action="getCategories"/>
+            <wsdl:output message="axis2:getCategoriesResponse" wsaw:Action="http://course.ws.blackboard/Course/getCategoriesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCourse">
+            <wsdl:input message="axis2:getCourseRequest" wsaw:Action="loadCourse"/>
+            <wsdl:output message="axis2:getCourseResponse" wsaw:Action="http://course.ws.blackboard/Course/getCourseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="createCourse">
+            <wsdl:input message="axis2:createCourseRequest" wsaw:Action="createCourse"/>
+            <wsdl:output message="axis2:createCourseResponse" wsaw:Action="http://course.ws.blackboard/Course/createCourseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrg">
+            <wsdl:input message="axis2:deleteOrgRequest" wsaw:Action="deleteOrg"/>
+            <wsdl:output message="axis2:deleteOrgResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteOrgResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgBatchUid">
+            <wsdl:input message="axis2:changeOrgBatchUidRequest" wsaw:Action="changeOrgBatchUid"/>
+            <wsdl:output message="axis2:changeOrgBatchUidResponse" wsaw:Action="http://course.ws.blackboard/Course/changeOrgBatchUidResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseCategory">
+            <wsdl:input message="axis2:saveCourseCategoryRequest" wsaw:Action="saveCourseCategory"/>
+            <wsdl:output message="axis2:saveCourseCategoryResponse" wsaw:Action="http://course.ws.blackboard/Course/saveCourseCategoryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveGroup">
+            <wsdl:input message="axis2:saveGroupRequest" wsaw:Action="saveGroup"/>
+            <wsdl:output message="axis2:saveGroupResponse" wsaw:Action="http://course.ws.blackboard/Course/saveGroupResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeCourseFromTerm">
+            <wsdl:input message="axis2:removeCourseFromTermRequest" wsaw:Action="removeCourseFromTerm"/>
+            <wsdl:output message="axis2:removeCourseFromTermResponse" wsaw:Action="http://course.ws.blackboard/Course/removeCourseFromTermResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="loadTermsByName">
+            <wsdl:input message="axis2:loadTermsByNameRequest" wsaw:Action="loadTermsByName"/>
+            <wsdl:output message="axis2:loadTermsByNameResponse" wsaw:Action="http://course.ws.blackboard/Course/loadTermsByNameResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getGroup">
+            <wsdl:input message="axis2:getGroupRequest" wsaw:Action="getGroup"/>
+            <wsdl:output message="axis2:getGroupResponse" wsaw:Action="http://course.ws.blackboard/Course/getGroupResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseCategoryMembership">
+            <wsdl:input message="axis2:deleteCourseCategoryMembershipRequest" wsaw:Action="deleteCourseCategoryMembership"/>
+            <wsdl:output message="axis2:deleteCourseCategoryMembershipResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteCourseCategoryMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveTerm">
+            <wsdl:input message="axis2:saveTermRequest" wsaw:Action="saveTerm"/>
+            <wsdl:output message="axis2:saveTermResponse" wsaw:Action="http://course.ws.blackboard/Course/saveTermResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="loadCoursesInTerm">
+            <wsdl:input message="axis2:loadCoursesInTermRequest" wsaw:Action="loadCoursesInTerm"/>
+            <wsdl:output message="axis2:loadCoursesInTermResponse" wsaw:Action="http://course.ws.blackboard/Course/loadCoursesInTermResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourse">
+            <wsdl:input message="axis2:deleteCourseRequest" wsaw:Action="deleteCourse"/>
+            <wsdl:output message="axis2:deleteCourseResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteCourseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="createOrg">
+            <wsdl:input message="axis2:createOrgRequest" wsaw:Action="createOrg"/>
+            <wsdl:output message="axis2:createOrgResponse" wsaw:Action="http://course.ws.blackboard/Course/createOrgResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgCategoryBatchUid">
+            <wsdl:input message="axis2:changeOrgCategoryBatchUidRequest" wsaw:Action="changeOrgCategoryBatchUid"/>
+            <wsdl:output message="axis2:changeOrgCategoryBatchUidResponse" wsaw:Action="http://course.ws.blackboard/Course/changeOrgCategoryBatchUidResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrgCategoryMembership">
+            <wsdl:input message="axis2:deleteOrgCategoryMembershipRequest" wsaw:Action="deleteOrgCategoryMembership"/>
+            <wsdl:output message="axis2:deleteOrgCategoryMembershipResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteOrgCategoryMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getClassifications">
+            <wsdl:input message="axis2:getClassificationsRequest" wsaw:Action="getClassifications"/>
+            <wsdl:output message="axis2:getClassificationsResponse" wsaw:Action="http://course.ws.blackboard/Course/getClassificationsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getOrg">
+            <wsdl:input message="axis2:getOrgRequest" wsaw:Action="loadOrg"/>
+            <wsdl:output message="axis2:getOrgResponse" wsaw:Action="http://course.ws.blackboard/Course/getOrgResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateOrg">
+            <wsdl:input message="axis2:updateOrgRequest" wsaw:Action="updateOrg"/>
+            <wsdl:output message="axis2:updateOrgResponse" wsaw:Action="http://course.ws.blackboard/Course/updateOrgResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getOrgCategoryMembership">
+            <wsdl:input message="axis2:getOrgCategoryMembershipRequest" wsaw:Action="getOrgCategoryMembership"/>
+            <wsdl:output message="axis2:getOrgCategoryMembershipResponse" wsaw:Action="http://course.ws.blackboard/Course/getOrgCategoryMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrgCategory">
+            <wsdl:input message="axis2:deleteOrgCategoryRequest" wsaw:Action="deleteOrgCategory"/>
+            <wsdl:output message="axis2:deleteOrgCategoryResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteOrgCategoryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseCategoryBatchUid">
+            <wsdl:input message="axis2:changeCourseCategoryBatchUidRequest" wsaw:Action="changeCourseCategoryBatchUid"/>
+            <wsdl:output message="axis2:changeCourseCategoryBatchUidResponse" wsaw:Action="http://course.ws.blackboard/Course/changeCourseCategoryBatchUidResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setCourseBannerImage">
+            <wsdl:input message="axis2:setCourseBannerImageRequest" wsaw:Action="setCourseBannerImage"/>
+            <wsdl:output message="axis2:setCourseBannerImageResponse" wsaw:Action="http://course.ws.blackboard/Course/setCourseBannerImageResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCartridge">
+            <wsdl:input message="axis2:getCartridgeRequest" wsaw:Action="getCartridge"/>
+            <wsdl:output message="axis2:getCartridgeResponse" wsaw:Action="http://course.ws.blackboard/Course/getCartridgeResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="loadTerm">
+            <wsdl:input message="axis2:loadTermRequest" wsaw:Action="loadTerm"/>
+            <wsdl:output message="axis2:loadTermResponse" wsaw:Action="http://course.ws.blackboard/Course/loadTermResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseCategory">
+            <wsdl:input message="axis2:deleteCourseCategoryRequest" wsaw:Action="deleteCourseCategory"/>
+            <wsdl:output message="axis2:deleteCourseCategoryResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteCourseCategoryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgDataSourceId">
+            <wsdl:input message="axis2:changeOrgDataSourceIdRequest" wsaw:Action="changeOrgDataSourceId"/>
+            <wsdl:output message="axis2:changeOrgDataSourceIdResponse" wsaw:Action="http://course.ws.blackboard/Course/changeOrgDataSourceIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="initializeCourseWS">
+            <wsdl:input message="axis2:initializeCourseWSRequest" wsaw:Action="initializeCourseWS"/>
+            <wsdl:output message="axis2:initializeCourseWSResponse" wsaw:Action="http://course.ws.blackboard/Course/initializeCourseWSResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseCategoryMembership">
+            <wsdl:input message="axis2:getCourseCategoryMembershipRequest" wsaw:Action="getCourseCategoryMembership"/>
+            <wsdl:output message="axis2:getCourseCategoryMembershipResponse" wsaw:Action="http://course.ws.blackboard/Course/getCourseCategoryMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateCourse">
+            <wsdl:input message="axis2:updateCourseRequest" wsaw:Action="updateCourse"/>
+            <wsdl:output message="axis2:updateCourseResponse" wsaw:Action="http://course.ws.blackboard/Course/updateCourseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="loadTermByCourseId">
+            <wsdl:input message="axis2:loadTermByCourseIdRequest" wsaw:Action="loadTermByCourseId"/>
+            <wsdl:output message="axis2:loadTermByCourseIdResponse" wsaw:Action="http://course.ws.blackboard/Course/loadTermByCourseIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addCourseToTerm">
+            <wsdl:input message="axis2:addCourseToTermRequest" wsaw:Action="addCourseToTerm"/>
+            <wsdl:output message="axis2:addCourseToTermResponse" wsaw:Action="http://course.ws.blackboard/Course/addCourseToTermResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAvailableGroupTools">
+            <wsdl:input message="axis2:getAvailableGroupToolsRequest" wsaw:Action="getAvailableGroupTools"/>
+            <wsdl:output message="axis2:getAvailableGroupToolsResponse" wsaw:Action="http://course.ws.blackboard/Course/getAvailableGroupToolsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCartridge">
+            <wsdl:input message="axis2:deleteCartridgeRequest" wsaw:Action="deleteCartridge"/>
+            <wsdl:output message="axis2:deleteCartridgeResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteCartridgeResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStaffInfo">
+            <wsdl:input message="axis2:deleteStaffInfoRequest" wsaw:Action="deleteStaffInfo"/>
+            <wsdl:output message="axis2:deleteStaffInfoResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteStaffInfoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveStaffInfo">
+            <wsdl:input message="axis2:saveStaffInfoRequest" wsaw:Action="saveStaffInfo"/>
+            <wsdl:output message="axis2:saveStaffInfoResponse" wsaw:Action="http://course.ws.blackboard/Course/saveStaffInfoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveOrgCategory">
+            <wsdl:input message="axis2:saveOrgCategoryRequest" wsaw:Action="saveOrgCategory"/>
+            <wsdl:output message="axis2:saveOrgCategoryResponse" wsaw:Action="http://course.ws.blackboard/Course/saveOrgCategoryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteGroup">
+            <wsdl:input message="axis2:deleteGroupRequest" wsaw:Action="deleteGroup"/>
+            <wsdl:output message="axis2:deleteGroupResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteGroupResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <wsdl:input message="axis2:getServerVersionRequest" wsaw:Action="getServerVersion"/>
+            <wsdl:output message="axis2:getServerVersionResponse" wsaw:Action="http://course.ws.blackboard/Course/getServerVersionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourse">
+            <wsdl:input message="axis2:saveCourseRequest" wsaw:Action="saveCourse"/>
+            <wsdl:output message="axis2:saveCourseResponse" wsaw:Action="http://course.ws.blackboard/Course/saveCourseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveCartridge">
+            <wsdl:input message="axis2:saveCartridgeRequest" wsaw:Action="saveCartridge"/>
+            <wsdl:output message="axis2:saveCartridgeResponse" wsaw:Action="http://course.ws.blackboard/Course/saveCartridgeResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveOrgCategoryMembership">
+            <wsdl:input message="axis2:saveOrgCategoryMembershipRequest" wsaw:Action="saveOrgCategoryMembership"/>
+            <wsdl:output message="axis2:saveOrgCategoryMembershipResponse" wsaw:Action="http://course.ws.blackboard/Course/saveOrgCategoryMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getStaffInfo">
+            <wsdl:input message="axis2:getStaffInfoRequest" wsaw:Action="getStaffInfo"/>
+            <wsdl:output message="axis2:getStaffInfoResponse" wsaw:Action="http://course.ws.blackboard/Course/getStaffInfoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseCategoryMembership">
+            <wsdl:input message="axis2:saveCourseCategoryMembershipRequest" wsaw:Action="saveCourseCategoryMembership"/>
+            <wsdl:output message="axis2:saveCourseCategoryMembershipResponse" wsaw:Action="http://course.ws.blackboard/Course/saveCourseCategoryMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseBatchUid">
+            <wsdl:input message="axis2:changeCourseBatchUidRequest" wsaw:Action="changeCourseBatchUid"/>
+            <wsdl:output message="axis2:changeCourseBatchUidResponse" wsaw:Action="http://course.ws.blackboard/Course/changeCourseBatchUidResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTerm">
+            <wsdl:input message="axis2:deleteTermRequest" wsaw:Action="deleteTerm"/>
+            <wsdl:output message="axis2:deleteTermResponse" wsaw:Action="http://course.ws.blackboard/Course/deleteTermResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseDataSourceId">
+            <wsdl:input message="axis2:changeCourseDataSourceIdRequest" wsaw:Action="changeCourseDataSourceId"/>
+            <wsdl:output message="axis2:changeCourseDataSourceIdResponse" wsaw:Action="http://course.ws.blackboard/Course/changeCourseDataSourceIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="loadTerms">
+            <wsdl:input message="axis2:loadTermsRequest" wsaw:Action="loadTerms"/>
+            <wsdl:output message="axis2:loadTermsResponse" wsaw:Action="http://course.ws.blackboard/Course/loadTermsResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="Course.WSSOAP11Binding" type="axis2:Course.WSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getCategories">
+            <soap:operation soapAction="getCategories" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourse">
+            <soap:operation soapAction="loadCourse" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createCourse">
+            <soap:operation soapAction="createCourse" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrg">
+            <soap:operation soapAction="deleteOrg" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgBatchUid">
+            <soap:operation soapAction="changeOrgBatchUid" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseCategory">
+            <soap:operation soapAction="saveCourseCategory" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveGroup">
+            <soap:operation soapAction="saveGroup" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeCourseFromTerm">
+            <soap:operation soapAction="removeCourseFromTerm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTermsByName">
+            <soap:operation soapAction="loadTermsByName" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGroup">
+            <soap:operation soapAction="getGroup" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseCategoryMembership">
+            <soap:operation soapAction="deleteCourseCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveTerm">
+            <soap:operation soapAction="saveTerm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadCoursesInTerm">
+            <soap:operation soapAction="loadCoursesInTerm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourse">
+            <soap:operation soapAction="deleteCourse" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createOrg">
+            <soap:operation soapAction="createOrg" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgCategoryBatchUid">
+            <soap:operation soapAction="changeOrgCategoryBatchUid" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrgCategoryMembership">
+            <soap:operation soapAction="deleteOrgCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getClassifications">
+            <soap:operation soapAction="getClassifications" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOrg">
+            <soap:operation soapAction="loadOrg" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateOrg">
+            <soap:operation soapAction="updateOrg" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOrgCategoryMembership">
+            <soap:operation soapAction="getOrgCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrgCategory">
+            <soap:operation soapAction="deleteOrgCategory" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseCategoryBatchUid">
+            <soap:operation soapAction="changeCourseCategoryBatchUid" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setCourseBannerImage">
+            <soap:operation soapAction="setCourseBannerImage" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCartridge">
+            <soap:operation soapAction="getCartridge" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTerm">
+            <soap:operation soapAction="loadTerm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseCategory">
+            <soap:operation soapAction="deleteCourseCategory" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgDataSourceId">
+            <soap:operation soapAction="changeOrgDataSourceId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeCourseWS">
+            <soap:operation soapAction="initializeCourseWS" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseCategoryMembership">
+            <soap:operation soapAction="getCourseCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateCourse">
+            <soap:operation soapAction="updateCourse" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTermByCourseId">
+            <soap:operation soapAction="loadTermByCourseId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCourseToTerm">
+            <soap:operation soapAction="addCourseToTerm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAvailableGroupTools">
+            <soap:operation soapAction="getAvailableGroupTools" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCartridge">
+            <soap:operation soapAction="deleteCartridge" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStaffInfo">
+            <soap:operation soapAction="deleteStaffInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveStaffInfo">
+            <soap:operation soapAction="saveStaffInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveOrgCategory">
+            <soap:operation soapAction="saveOrgCategory" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteGroup">
+            <soap:operation soapAction="deleteGroup" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <soap:operation soapAction="getServerVersion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourse">
+            <soap:operation soapAction="saveCourse" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCartridge">
+            <soap:operation soapAction="saveCartridge" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveOrgCategoryMembership">
+            <soap:operation soapAction="saveOrgCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStaffInfo">
+            <soap:operation soapAction="getStaffInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseCategoryMembership">
+            <soap:operation soapAction="saveCourseCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseBatchUid">
+            <soap:operation soapAction="changeCourseBatchUid" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTerm">
+            <soap:operation soapAction="deleteTerm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseDataSourceId">
+            <soap:operation soapAction="changeCourseDataSourceId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTerms">
+            <soap:operation soapAction="loadTerms" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="Course.WSSOAP12Binding" type="axis2:Course.WSPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getCategories">
+            <soap12:operation soapAction="getCategories" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourse">
+            <soap12:operation soapAction="loadCourse" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createCourse">
+            <soap12:operation soapAction="createCourse" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrg">
+            <soap12:operation soapAction="deleteOrg" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgBatchUid">
+            <soap12:operation soapAction="changeOrgBatchUid" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseCategory">
+            <soap12:operation soapAction="saveCourseCategory" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveGroup">
+            <soap12:operation soapAction="saveGroup" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeCourseFromTerm">
+            <soap12:operation soapAction="removeCourseFromTerm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTermsByName">
+            <soap12:operation soapAction="loadTermsByName" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGroup">
+            <soap12:operation soapAction="getGroup" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseCategoryMembership">
+            <soap12:operation soapAction="deleteCourseCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveTerm">
+            <soap12:operation soapAction="saveTerm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadCoursesInTerm">
+            <soap12:operation soapAction="loadCoursesInTerm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourse">
+            <soap12:operation soapAction="deleteCourse" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createOrg">
+            <soap12:operation soapAction="createOrg" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgCategoryBatchUid">
+            <soap12:operation soapAction="changeOrgCategoryBatchUid" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrgCategoryMembership">
+            <soap12:operation soapAction="deleteOrgCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getClassifications">
+            <soap12:operation soapAction="getClassifications" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOrg">
+            <soap12:operation soapAction="loadOrg" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateOrg">
+            <soap12:operation soapAction="updateOrg" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOrgCategoryMembership">
+            <soap12:operation soapAction="getOrgCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrgCategory">
+            <soap12:operation soapAction="deleteOrgCategory" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseCategoryBatchUid">
+            <soap12:operation soapAction="changeCourseCategoryBatchUid" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setCourseBannerImage">
+            <soap12:operation soapAction="setCourseBannerImage" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCartridge">
+            <soap12:operation soapAction="getCartridge" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTerm">
+            <soap12:operation soapAction="loadTerm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseCategory">
+            <soap12:operation soapAction="deleteCourseCategory" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgDataSourceId">
+            <soap12:operation soapAction="changeOrgDataSourceId" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeCourseWS">
+            <soap12:operation soapAction="initializeCourseWS" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseCategoryMembership">
+            <soap12:operation soapAction="getCourseCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateCourse">
+            <soap12:operation soapAction="updateCourse" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTermByCourseId">
+            <soap12:operation soapAction="loadTermByCourseId" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCourseToTerm">
+            <soap12:operation soapAction="addCourseToTerm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAvailableGroupTools">
+            <soap12:operation soapAction="getAvailableGroupTools" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCartridge">
+            <soap12:operation soapAction="deleteCartridge" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStaffInfo">
+            <soap12:operation soapAction="deleteStaffInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveStaffInfo">
+            <soap12:operation soapAction="saveStaffInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveOrgCategory">
+            <soap12:operation soapAction="saveOrgCategory" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteGroup">
+            <soap12:operation soapAction="deleteGroup" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <soap12:operation soapAction="getServerVersion" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourse">
+            <soap12:operation soapAction="saveCourse" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCartridge">
+            <soap12:operation soapAction="saveCartridge" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveOrgCategoryMembership">
+            <soap12:operation soapAction="saveOrgCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStaffInfo">
+            <soap12:operation soapAction="getStaffInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseCategoryMembership">
+            <soap12:operation soapAction="saveCourseCategoryMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseBatchUid">
+            <soap12:operation soapAction="changeCourseBatchUid" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTerm">
+            <soap12:operation soapAction="deleteTerm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseDataSourceId">
+            <soap12:operation soapAction="changeCourseDataSourceId" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTerms">
+            <soap12:operation soapAction="loadTerms" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="Course.WSHttpBinding" type="axis2:Course.WSPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getCategories">
+            <http:operation location="Course.WS/getCategories"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getCategories"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getCategories"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourse">
+            <http:operation location="Course.WS/getCourse"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getCourse"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getCourse"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createCourse">
+            <http:operation location="Course.WS/createCourse"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="createCourse"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="createCourse"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrg">
+            <http:operation location="Course.WS/deleteOrg"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteOrg"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteOrg"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgBatchUid">
+            <http:operation location="Course.WS/changeOrgBatchUid"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="changeOrgBatchUid"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="changeOrgBatchUid"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseCategory">
+            <http:operation location="Course.WS/saveCourseCategory"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveCourseCategory"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveCourseCategory"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveGroup">
+            <http:operation location="Course.WS/saveGroup"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveGroup"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveGroup"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeCourseFromTerm">
+            <http:operation location="Course.WS/removeCourseFromTerm"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="removeCourseFromTerm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="removeCourseFromTerm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTermsByName">
+            <http:operation location="Course.WS/loadTermsByName"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="loadTermsByName"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="loadTermsByName"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGroup">
+            <http:operation location="Course.WS/getGroup"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getGroup"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getGroup"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseCategoryMembership">
+            <http:operation location="Course.WS/deleteCourseCategoryMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteCourseCategoryMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteCourseCategoryMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveTerm">
+            <http:operation location="Course.WS/saveTerm"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveTerm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveTerm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadCoursesInTerm">
+            <http:operation location="Course.WS/loadCoursesInTerm"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="loadCoursesInTerm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="loadCoursesInTerm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourse">
+            <http:operation location="Course.WS/deleteCourse"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteCourse"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteCourse"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createOrg">
+            <http:operation location="Course.WS/createOrg"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="createOrg"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="createOrg"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgCategoryBatchUid">
+            <http:operation location="Course.WS/changeOrgCategoryBatchUid"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="changeOrgCategoryBatchUid"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="changeOrgCategoryBatchUid"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrgCategoryMembership">
+            <http:operation location="Course.WS/deleteOrgCategoryMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteOrgCategoryMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteOrgCategoryMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getClassifications">
+            <http:operation location="Course.WS/getClassifications"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getClassifications"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getClassifications"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOrg">
+            <http:operation location="Course.WS/getOrg"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getOrg"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getOrg"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateOrg">
+            <http:operation location="Course.WS/updateOrg"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="updateOrg"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="updateOrg"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOrgCategoryMembership">
+            <http:operation location="Course.WS/getOrgCategoryMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getOrgCategoryMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getOrgCategoryMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteOrgCategory">
+            <http:operation location="Course.WS/deleteOrgCategory"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteOrgCategory"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteOrgCategory"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseCategoryBatchUid">
+            <http:operation location="Course.WS/changeCourseCategoryBatchUid"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="changeCourseCategoryBatchUid"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="changeCourseCategoryBatchUid"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setCourseBannerImage">
+            <http:operation location="Course.WS/setCourseBannerImage"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="setCourseBannerImage"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="setCourseBannerImage"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCartridge">
+            <http:operation location="Course.WS/getCartridge"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getCartridge"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getCartridge"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTerm">
+            <http:operation location="Course.WS/loadTerm"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="loadTerm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="loadTerm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseCategory">
+            <http:operation location="Course.WS/deleteCourseCategory"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteCourseCategory"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteCourseCategory"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeOrgDataSourceId">
+            <http:operation location="Course.WS/changeOrgDataSourceId"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="changeOrgDataSourceId"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="changeOrgDataSourceId"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeCourseWS">
+            <http:operation location="Course.WS/initializeCourseWS"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="initializeCourseWS"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="initializeCourseWS"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseCategoryMembership">
+            <http:operation location="Course.WS/getCourseCategoryMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getCourseCategoryMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getCourseCategoryMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateCourse">
+            <http:operation location="Course.WS/updateCourse"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="updateCourse"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="updateCourse"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTermByCourseId">
+            <http:operation location="Course.WS/loadTermByCourseId"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="loadTermByCourseId"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="loadTermByCourseId"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCourseToTerm">
+            <http:operation location="Course.WS/addCourseToTerm"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="addCourseToTerm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="addCourseToTerm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAvailableGroupTools">
+            <http:operation location="Course.WS/getAvailableGroupTools"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getAvailableGroupTools"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getAvailableGroupTools"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCartridge">
+            <http:operation location="Course.WS/deleteCartridge"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteCartridge"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteCartridge"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStaffInfo">
+            <http:operation location="Course.WS/deleteStaffInfo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteStaffInfo"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteStaffInfo"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveStaffInfo">
+            <http:operation location="Course.WS/saveStaffInfo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveStaffInfo"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveStaffInfo"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveOrgCategory">
+            <http:operation location="Course.WS/saveOrgCategory"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveOrgCategory"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveOrgCategory"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteGroup">
+            <http:operation location="Course.WS/deleteGroup"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteGroup"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteGroup"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <http:operation location="Course.WS/getServerVersion"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getServerVersion"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getServerVersion"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourse">
+            <http:operation location="Course.WS/saveCourse"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveCourse"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveCourse"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCartridge">
+            <http:operation location="Course.WS/saveCartridge"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveCartridge"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveCartridge"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveOrgCategoryMembership">
+            <http:operation location="Course.WS/saveOrgCategoryMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveOrgCategoryMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveOrgCategoryMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStaffInfo">
+            <http:operation location="Course.WS/getStaffInfo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getStaffInfo"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getStaffInfo"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseCategoryMembership">
+            <http:operation location="Course.WS/saveCourseCategoryMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveCourseCategoryMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveCourseCategoryMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseBatchUid">
+            <http:operation location="Course.WS/changeCourseBatchUid"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="changeCourseBatchUid"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="changeCourseBatchUid"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteTerm">
+            <http:operation location="Course.WS/deleteTerm"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteTerm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteTerm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeCourseDataSourceId">
+            <http:operation location="Course.WS/changeCourseDataSourceId"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="changeCourseDataSourceId"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="changeCourseDataSourceId"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadTerms">
+            <http:operation location="Course.WS/loadTerms"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="loadTerms"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="loadTerms"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Course.WS">
+        <wsdl:port name="Course.WSSOAP11port_https" binding="axis2:Course.WSSOAP11Binding">
+            <soap:address location="https://lms-devl.bu.edu:80/webapps/ws/services/Course.WS"/>
+        </wsdl:port>
+        <wsdl:port name="Course.WSSOAP11port_http1" binding="axis2:Course.WSSOAP11Binding">
+            <soap:address location="http://lms-devl.bu.edu:80/webapps/ws/services/Course.WS"/>
+        </wsdl:port>
+        <wsdl:port name="Course.WSSOAP12port_https" binding="axis2:Course.WSSOAP12Binding">
+            <soap12:address location="https://lms-devl.bu.edu:80/webapps/ws/services/Course.WS"/>
+        </wsdl:port>
+        <wsdl:port name="Course.WSSOAP12port_http1" binding="axis2:Course.WSSOAP12Binding">
+            <soap12:address location="http://lms-devl.bu.edu:80/webapps/ws/services/Course.WS"/>
+        </wsdl:port>
+        <wsdl:port name="Course.WSHttpport" binding="axis2:Course.WSHttpBinding">
+            <http:address location="https://lms-devl.bu.edu:80/webapps/ws/services/Course.WS"/>
+        </wsdl:port>
+        <wsdl:port name="Course.WSHttpport1" binding="axis2:Course.WSHttpBinding">
+            <http:address location="http://lms-devl.bu.edu:80/webapps/ws/services/Course.WS"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

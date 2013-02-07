@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://coursemembership.ws.blackboard/" xmlns:ns2="http://coursemembership.ws.blackboard/xsd" xmlns:ns1="http://coursemembership.ws.blackboard" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.platform.blackboard/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://coursemembership.ws.blackboard/">
+    <wsdl:types>
+        <xs:schema xmlns:ax211="http://ws.platform.blackboard/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.platform.blackboard/xsd">
+            <xs:complexType name="VersionVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="version" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ns="http://coursemembership.ws.blackboard" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://coursemembership.ws.blackboard">
+            <xs:element name="getServerVersion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="unused" nillable="true" type="ns0:VersionVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getServerVersionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns0:VersionVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCourseRoles">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="f" nillable="true" type="ns2:CourseRoleFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCourseRolesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns2:CourseMembershipRoleVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCourseMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="f" nillable="true" type="ns2:MembershipFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCourseMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns2:CourseMembershipVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="f" nillable="true" type="ns2:MembershipFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGroupMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns2:GroupMembershipVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initializeCourseMembershipWS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ignore" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initializeCourseMembershipWSResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourseMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourseMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteGroupMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteGroupMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourseMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="cmArray" nillable="true" type="ns2:CourseMembershipVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourseMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveGroupMembership">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="g" nillable="true" type="ns2:GroupMembershipVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveGroupMembershipResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:ax212="http://coursemembership.ws.blackboard/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://coursemembership.ws.blackboard/xsd">
+            <xs:complexType name="CourseRoleFilter">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="roleIds" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CourseMembershipRoleVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="courseRoleDescription" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="defaultRole" nillable="true" type="xs:boolean"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="orgRoleDescription" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="roleIdentifier" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="MembershipFilter">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="courseIds" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="courseMembershipIds" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="filterType" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="groupIds" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="groupMembershipIds" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="roleIds" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="userIds" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CourseMembershipVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="available" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dataSourceId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="enrollmentDate" type="xs:long"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="hasCartridgeAccess" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="imageFile" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="roleId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GroupMembershipVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="courseMembershipId" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="groupId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="groupMembershipId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="initializeCourseMembershipWSRequest">
+        <wsdl:part name="parameters" element="ns1:initializeCourseMembershipWS"/>
+    </wsdl:message>
+    <wsdl:message name="initializeCourseMembershipWSResponse">
+        <wsdl:part name="parameters" element="ns1:initializeCourseMembershipWSResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseMembershipRequest">
+        <wsdl:part name="parameters" element="ns1:saveCourseMembership"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseMembershipResponse">
+        <wsdl:part name="parameters" element="ns1:saveCourseMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCourseMembershipRequest">
+        <wsdl:part name="parameters" element="ns1:getCourseMembership"/>
+    </wsdl:message>
+    <wsdl:message name="getCourseMembershipResponse">
+        <wsdl:part name="parameters" element="ns1:getCourseMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveGroupMembershipRequest">
+        <wsdl:part name="parameters" element="ns1:saveGroupMembership"/>
+    </wsdl:message>
+    <wsdl:message name="saveGroupMembershipResponse">
+        <wsdl:part name="parameters" element="ns1:saveGroupMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getServerVersionRequest">
+        <wsdl:part name="parameters" element="ns1:getServerVersion"/>
+    </wsdl:message>
+    <wsdl:message name="getServerVersionResponse">
+        <wsdl:part name="parameters" element="ns1:getServerVersionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseMembershipRequest">
+        <wsdl:part name="parameters" element="ns1:deleteCourseMembership"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseMembershipResponse">
+        <wsdl:part name="parameters" element="ns1:deleteCourseMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteGroupMembershipRequest">
+        <wsdl:part name="parameters" element="ns1:deleteGroupMembership"/>
+    </wsdl:message>
+    <wsdl:message name="deleteGroupMembershipResponse">
+        <wsdl:part name="parameters" element="ns1:deleteGroupMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getGroupMembershipRequest">
+        <wsdl:part name="parameters" element="ns1:getGroupMembership"/>
+    </wsdl:message>
+    <wsdl:message name="getGroupMembershipResponse">
+        <wsdl:part name="parameters" element="ns1:getGroupMembershipResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCourseRolesRequest">
+        <wsdl:part name="parameters" element="ns1:getCourseRoles"/>
+    </wsdl:message>
+    <wsdl:message name="getCourseRolesResponse">
+        <wsdl:part name="parameters" element="ns1:getCourseRolesResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CourseMembership.WSPortType">
+        <wsdl:operation name="initializeCourseMembershipWS">
+            <wsdl:input message="axis2:initializeCourseMembershipWSRequest" wsaw:Action="initializeCourseMembershipWS"/>
+            <wsdl:output message="axis2:initializeCourseMembershipWSResponse" wsaw:Action="http://coursemembership.ws.blackboard/CourseMembership/initializeCourseMembershipWSResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseMembership">
+            <wsdl:input message="axis2:saveCourseMembershipRequest" wsaw:Action="saveCourseMembership"/>
+            <wsdl:output message="axis2:saveCourseMembershipResponse" wsaw:Action="http://coursemembership.ws.blackboard/CourseMembership/saveCourseMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseMembership">
+            <wsdl:input message="axis2:getCourseMembershipRequest" wsaw:Action="getCourseMembership"/>
+            <wsdl:output message="axis2:getCourseMembershipResponse" wsaw:Action="http://coursemembership.ws.blackboard/CourseMembership/getCourseMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveGroupMembership">
+            <wsdl:input message="axis2:saveGroupMembershipRequest" wsaw:Action="saveGroupMembership"/>
+            <wsdl:output message="axis2:saveGroupMembershipResponse" wsaw:Action="http://coursemembership.ws.blackboard/CourseMembership/saveGroupMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <wsdl:input message="axis2:getServerVersionRequest" wsaw:Action="getServerVersion"/>
+            <wsdl:output message="axis2:getServerVersionResponse" wsaw:Action="http://coursemembership.ws.blackboard/CourseMembership/getServerVersionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseMembership">
+            <wsdl:input message="axis2:deleteCourseMembershipRequest" wsaw:Action="deleteCourseMembership"/>
+            <wsdl:output message="axis2:deleteCourseMembershipResponse" wsaw:Action="http://coursemembership.ws.blackboard/CourseMembership/deleteCourseMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteGroupMembership">
+            <wsdl:input message="axis2:deleteGroupMembershipRequest" wsaw:Action="deleteGroupMembership"/>
+            <wsdl:output message="axis2:deleteGroupMembershipResponse" wsaw:Action="http://coursemembership.ws.blackboard/CourseMembership/deleteGroupMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getGroupMembership">
+            <wsdl:input message="axis2:getGroupMembershipRequest" wsaw:Action="getGroupMembership"/>
+            <wsdl:output message="axis2:getGroupMembershipResponse" wsaw:Action="http://coursemembership.ws.blackboard/CourseMembership/getGroupMembershipResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseRoles">
+            <wsdl:input message="axis2:getCourseRolesRequest" wsaw:Action="getCourseRoles"/>
+            <wsdl:output message="axis2:getCourseRolesResponse" wsaw:Action="http://coursemembership.ws.blackboard/CourseMembership/getCourseRolesResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CourseMembership.WSSOAP11Binding" type="axis2:CourseMembership.WSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="initializeCourseMembershipWS">
+            <soap:operation soapAction="initializeCourseMembershipWS" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseMembership">
+            <soap:operation soapAction="saveCourseMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseMembership">
+            <soap:operation soapAction="getCourseMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveGroupMembership">
+            <soap:operation soapAction="saveGroupMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <soap:operation soapAction="getServerVersion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseMembership">
+            <soap:operation soapAction="deleteCourseMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteGroupMembership">
+            <soap:operation soapAction="deleteGroupMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGroupMembership">
+            <soap:operation soapAction="getGroupMembership" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseRoles">
+            <soap:operation soapAction="getCourseRoles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CourseMembership.WSSOAP12Binding" type="axis2:CourseMembership.WSPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="initializeCourseMembershipWS">
+            <soap12:operation soapAction="initializeCourseMembershipWS" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseMembership">
+            <soap12:operation soapAction="saveCourseMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseMembership">
+            <soap12:operation soapAction="getCourseMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveGroupMembership">
+            <soap12:operation soapAction="saveGroupMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <soap12:operation soapAction="getServerVersion" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseMembership">
+            <soap12:operation soapAction="deleteCourseMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteGroupMembership">
+            <soap12:operation soapAction="deleteGroupMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGroupMembership">
+            <soap12:operation soapAction="getGroupMembership" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseRoles">
+            <soap12:operation soapAction="getCourseRoles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CourseMembership.WSHttpBinding" type="axis2:CourseMembership.WSPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="initializeCourseMembershipWS">
+            <http:operation location="CourseMembership.WS/initializeCourseMembershipWS"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="initializeCourseMembershipWS"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="initializeCourseMembershipWS"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseMembership">
+            <http:operation location="CourseMembership.WS/saveCourseMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveCourseMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveCourseMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseMembership">
+            <http:operation location="CourseMembership.WS/getCourseMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getCourseMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getCourseMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveGroupMembership">
+            <http:operation location="CourseMembership.WS/saveGroupMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveGroupMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveGroupMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <http:operation location="CourseMembership.WS/getServerVersion"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getServerVersion"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getServerVersion"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseMembership">
+            <http:operation location="CourseMembership.WS/deleteCourseMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteCourseMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteCourseMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteGroupMembership">
+            <http:operation location="CourseMembership.WS/deleteGroupMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteGroupMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteGroupMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGroupMembership">
+            <http:operation location="CourseMembership.WS/getGroupMembership"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getGroupMembership"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getGroupMembership"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCourseRoles">
+            <http:operation location="CourseMembership.WS/getCourseRoles"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getCourseRoles"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getCourseRoles"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CourseMembership.WS">
+        <wsdl:port name="CourseMembership.WSSOAP11port_https" binding="axis2:CourseMembership.WSSOAP11Binding">
+            <soap:address location="https://lms-devl.bu.edu:80/webapps/ws/services/CourseMembership.WS"/>
+        </wsdl:port>
+        <wsdl:port name="CourseMembership.WSSOAP11port_http1" binding="axis2:CourseMembership.WSSOAP11Binding">
+            <soap:address location="http://lms-devl.bu.edu:80/webapps/ws/services/CourseMembership.WS"/>
+        </wsdl:port>
+        <wsdl:port name="CourseMembership.WSSOAP12port_https" binding="axis2:CourseMembership.WSSOAP12Binding">
+            <soap12:address location="https://lms-devl.bu.edu:80/webapps/ws/services/CourseMembership.WS"/>
+        </wsdl:port>
+        <wsdl:port name="CourseMembership.WSSOAP12port_http1" binding="axis2:CourseMembership.WSSOAP12Binding">
+            <soap12:address location="http://lms-devl.bu.edu:80/webapps/ws/services/CourseMembership.WS"/>
+        </wsdl:port>
+        <wsdl:port name="CourseMembership.WSHttpport" binding="axis2:CourseMembership.WSHttpBinding">
+            <http:address location="https://lms-devl.bu.edu:80/webapps/ws/services/CourseMembership.WS"/>
+        </wsdl:port>
+        <wsdl:port name="CourseMembership.WSHttpport1" binding="axis2:CourseMembership.WSHttpBinding">
+            <http:address location="http://lms-devl.bu.edu:80/webapps/ws/services/CourseMembership.WS"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
