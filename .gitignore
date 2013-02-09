@@ -1,6 +1,8 @@
 # Maven #
 target/
 
+# Blackboard Info #
+bbws.properties
 
 *.class
 

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:/bbws.properties" />
+	</bean>
+	 
+  
+  <bean id="registerToolService" class="tlt.registerproxytool.RegisterToolServiceImpl" />
+   
+  <bean id="registerToolController" class="tlt.registerproxytool.RegisterToolController" >
+
+    <property name="registerToolService" ref="registerToolService" />
+   
+   	<property name="blackboardServerURL" value="${bbws.blackboardServerURL}" />
+   	<property name="clientVendorId" value="${bbws.clientVendorId}" />
+   	<property name="clientProgramId" value="${bbws.clientProgramId}" />
+   	<property name="modulePath" value="${bbws.modulePath}" />
+   	<property name="toolRegistrationPassword" value="${bbws.toolRegistrationPassword}" />
+   	<property name="sharedSecret" value="${bbws.sharedSecret}" />
+   	<property name="toolDescription" value="${bbws.toolDescription}" />
+   	<property name="toolMethods">
+   		<list>
+   			<value>Context.WS:emulateUser</value>
+   			<value>Context.WS:logout</value>
+   			<value>Context.WS:getMemberships</value>
+   			<value>Context.WS.getServerVersion</value>
+   			<value>Context.WS.initialize</value>
+   			<value>Context.WS.loginTool</value>
+   			<value>Context.WS.registerTool</value>
+   			<value>Course.WS:getCourse</value>
+   			<value>Gradebook.WS:getGrades</value>
+   			<value>Gradebook.WS:getGradebookColumns</value>
+   			<value>User.WS:getUser</value>
+   		</list>
+   	</property>
+   	
+   
+   </bean>
+
+</beans>
+
+
