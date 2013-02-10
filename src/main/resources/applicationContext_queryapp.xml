@@ -9,10 +9,10 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:/bbws.properties" />
 	</bean>
-  <bean id="blackboardCoursesForUserService" class="tlt.webserver.Appservice" />
+  <bean id="queryService" class="tlt.queryapp.QueryService" />
   
-  <bean id="blackboardCoursesForUserController" class="tlt.webserver.Appcontroller" >
-    <property name="blackboardCoursesForUserService" ref="blackboardCoursesForUserService" />
+  <bean id="queryController" class="tlt.queryapp.Appcontroller" >
+    <property name="queryService" ref="queryService" />
    	<property name="blackboardServerURL" value="${bbws.blackboardServerURL}" />
    	<property name="clientVendorId" value="${bbws.clientVendorId}" />
    	<property name="clientProgramId" value="${bbws.clientProgramId}" />

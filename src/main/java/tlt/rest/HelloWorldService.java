@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-import tlt.queryapp.Appcontroller;
+import tlt.queryapp.QueryApp;
  
 @Path("/hello")
 public class HelloWorldService {
@@ -16,18 +16,10 @@ public class HelloWorldService {
 	@Path("/{param}")
 	public Response getMsg(@PathParam("param") String msg) {
 		/* Missing Inputs, going to replace this with SpringSource Application Context */
-		String blackboardServerURL = "";
-		String clientVendorId = "";
-		String clientProgramId = "";
-		String modulePath = "";
-		String toolRegistrationPassword = "";
-		String sharedSecret = "";
-		String toolDescription = "";
-		String username = "";
-		String output = "";
-		Appcontroller controller = new Appcontroller(blackboardServerURL, clientVendorId, clientProgramId, modulePath, sharedSecret, username);
+		QueryApp query = new QueryApp();
+		String output = null;
 		try{
-			output = controller.getBlackboardCoursesForUser();
+			output = query.sendQuery();
 		}
 		catch(RemoteException e){
 			

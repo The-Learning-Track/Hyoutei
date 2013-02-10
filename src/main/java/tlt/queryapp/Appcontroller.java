@@ -9,7 +9,7 @@ public class Appcontroller {
 
 	private static final Logger logger = Logger.getLogger(Appcontroller.class.getName() );
 	
-	private Appservice appservice ;
+	private QueryService queryService ;
 	private String blackboardServerURL ;
 	private String clientVendorId ;
 	private String clientProgramId;
@@ -17,17 +17,6 @@ public class Appcontroller {
 	private String sharedSecret ;
 	private String username ;
 	
-	public Appcontroller(String blackboardServerURL , String clientVendorId, String clientProgramId,
-			String modulePath, String sharedSecret, String username){
-		this.blackboardServerURL = blackboardServerURL;
-		this.clientVendorId = clientVendorId;
-		this.clientProgramId = clientProgramId;
-		this.modulePath = modulePath;
-		this.sharedSecret = sharedSecret;
-		this.username = username;	
-	}
-
-
 	/**
 	 * Using the values of the instance fields (see
 	 * public set methods) and the BlackboardCoursesForUserService 
@@ -37,18 +26,18 @@ public class Appcontroller {
 	 * @throws RemoteException 
 	 */
 	public String getBlackboardCoursesForUser() throws RemoteException {
-		appservice = new Appservice();
-		return appservice.getBlackboardCoursesForUser(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId, username) ;
+		queryService = new QueryService();
+		return queryService.getBlackboardCoursesForUser(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId, username);
+
 	}
 	
 	
-	public Appservice getBlackboardCoursesForUserService() {
-		return appservice;
+	public QueryService getQueryService() {
+		return queryService;
 	}
 
-	
-	public void setBlackboardCoursesForUserService(Appservice appservice) {
-		this.appservice = appservice;
+	public void setQueryService(QueryService queryService) {
+		this.queryService = queryService;
 	}
 
 	public String getBlackboardServerURL() {
