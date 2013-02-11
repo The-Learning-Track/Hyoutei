@@ -5,7 +5,7 @@
 	<artifactId>thelearningtrack-backend</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>RESTful Web Service - The Learning Track</name>
+	<name>theLearningTrack</name>
 	<url>http://maven.apache.org</url>
 
 	<repositories>
@@ -117,7 +117,7 @@
 
 
 	<build>
-	<finalName>thelearningtrack</finalName>
+	<finalName>theLearningTrack</finalName>
 	<plugins>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
