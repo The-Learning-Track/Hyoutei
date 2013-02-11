@@ -195,9 +195,6 @@ public class SOAPhandler {
 			i++;
 
 		}
-
-	//	System.out.println("Course ids found for classes " + username + " is enrolled in are " + Arrays.asList(courseIds));
-
 		return courseIds;
 	}
 

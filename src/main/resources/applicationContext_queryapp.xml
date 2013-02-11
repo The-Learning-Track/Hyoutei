@@ -11,7 +11,7 @@
 	</bean>
   <bean id="queryService" class="tlt.queryapp.QueryService" />
   
-  <bean id="queryController" class="tlt.queryapp.Appcontroller" >
+  <bean id="queryController" class="tlt.queryapp.QueryController" >
     <property name="queryService" ref="queryService" />
    	<property name="blackboardServerURL" value="${bbws.blackboardServerURL}" />
    	<property name="clientVendorId" value="${bbws.clientVendorId}" />

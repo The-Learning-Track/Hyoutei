@@ -17,14 +17,14 @@ public class RESTful {
 	public Response getMsg(@PathParam("param") String msg) {
 		/* Missing Inputs, going to replace this with SpringSource Application Context */
 		QueryApp query = new QueryApp();
-		String output = null;
+		String[] output = null;
 		try{
 			output = query.sendCourseQuery();
 		}
 		catch(RemoteException e){	
 		}
  
-		return Response.status(200).entity(output).build();
+		return Response.status(200).entity(output[0] + output[1]).build();
  
 	}
  

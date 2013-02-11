@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.axis2.AxisFault;
-
 import tlt.SOAPclientHelper.Course;
 import tlt.SOAPclientHelper.Pair;
 import tlt.SOAPclientHelper.SOAPhandler;
@@ -23,8 +21,11 @@ public class QueryService implements QueryInterface{
 	}
 
 	public String[] getCourseList(String username) throws RemoteException{
-		if(soaphandler.loginTool() == true)
-			return soaphandler.getCoursesID(username);
+		if(soaphandler.loginTool() == true){
+			String[] courseIDs = soaphandler.getCoursesID(username);
+			List<String> courseNames = soaphandler.getCourseNames(courseIDs, username);
+			return courseNames.toArray(new String[courseNames.size()]);
+		}
 		return null;
 	}
 	
