@@ -21,8 +21,7 @@ public class RESTful {
 		try{
 			output = query.sendCourseQuery();
 		}
-		catch(RemoteException e){
-			
+		catch(RemoteException e){	
 		}
  
 		return Response.status(200).entity(output).build();

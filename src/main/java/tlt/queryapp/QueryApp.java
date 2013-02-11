@@ -5,22 +5,20 @@ import java.rmi.RemoteException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import tlt.queryapp.Appcontroller;
-import tlt.registerproxytool.RegisterProxyToolApp;
-import tlt.registerproxytool.RegisterToolController;
+import tlt.queryapp.QueryController;
 
 public class QueryApp {
 	ApplicationContext ctx;
-	Appcontroller appcontroller;
+	QueryController querycontroller;
 
 	public QueryApp(){
 		this.ctx = new ClassPathXmlApplicationContext("applicationContext_queryapp.xml");;
-		this.appcontroller = (Appcontroller) ctx.getBean("queryController");
+		this.querycontroller = (QueryController) ctx.getBean("queryController");
 	}
 	
-	public String sendQuery() throws RemoteException {
-		appcontroller = (Appcontroller) ctx.getBean("queryController");
-		return appcontroller.getBlackboardCoursesForUser();	
+	public String[] sendCourseQuery() throws RemoteException {
+		querycontroller = (QueryController) ctx.getBean("queryController");
+		return querycontroller.getBlackboardCoursesForUser();	
 	}
 	
 }

@@ -5,22 +5,33 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.axis2.AxisFault;
+
 import tlt.SOAPclientHelper.Course;
 import tlt.SOAPclientHelper.Pair;
 import tlt.SOAPclientHelper.SOAPhandler;
 import tlt.SOAPclientHelper.Student;
 
 
-public class QueryService implements AppserviceInterface{
+public class QueryService implements QueryInterface{
+	
+	SOAPhandler soaphandler;
+	
+	public void initializeSOAPhandler(String modulePath, String blackboardServerURL,
+			String sharedSecret, String vendorId, String clientProgramId, String username) throws RemoteException{
+		soaphandler = new SOAPhandler(modulePath, blackboardServerURL, sharedSecret, vendorId, clientProgramId);
+	}
 
+	public String[] getCourseList(String username) throws RemoteException{
+		if(soaphandler.loginTool() == true)
+			return soaphandler.getCoursesID(username);
+		return null;
+	}
+	
 	@Override
-	public String getBlackboardCoursesForUser(String modulePath, String blackboardServerURL,
-			String sharedSecret, String vendorId, String clientProgramId, String username)
-			throws RemoteException {
+	public String getCourseInfo(String courseID) throws RemoteException {
 		
-		SOAPhandler soaphandler = new SOAPhandler(modulePath, blackboardServerURL, sharedSecret, vendorId, clientProgramId);
 		String output = "";
-		//List<Student> students = new ArrayList<Student>();
 		HashMap<String,Student> students = new HashMap<String,Student>();
 		if (soaphandler.loginTool() == true) {
 			String[] courseIDs = soaphandler.getCoursesID("kkawakam");
@@ -45,9 +56,9 @@ public class QueryService implements AppserviceInterface{
 				output += "User ID: " + userid;
 				Iterator<String> courseIter = student.getCourses().keySet().iterator();
 				while(courseIter.hasNext()){
-					String courseID = courseIter.next();
-					Course course = student.getCourses().get(courseID);
-					output += "\tCourse ID:" + courseID + "\n";
+					String courseID1 = courseIter.next();
+					Course course = student.getCourses().get(courseID1);
+					output += "\tCourse ID:" + courseID1 + "\n";
 					for(Pair grade :course.getList() ){
 						if(!grade.getGrade().trim().isEmpty())
 							output += "\tColumn ID: " + grade.getColumnID() + "\tGrade: " + grade.getGrade();
