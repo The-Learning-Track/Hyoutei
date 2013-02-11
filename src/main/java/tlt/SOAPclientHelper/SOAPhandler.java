@@ -9,6 +9,7 @@ import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
 
+import org.apache.axis2.AxisFault;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
 import org.apache.axis2.context.ConfigurationContext;
@@ -55,7 +56,7 @@ public class SOAPhandler {
 	private PasswordCallbackClass pwcb;
 
 	public SOAPhandler(String modulePath, String blackboardServerURL,
-			String sharedSecret, String vendorId, String clientProgramId) throws RemoteException{
+			String sharedSecret, String vendorId, String clientProgramId) throws AxisFault{
 		this.blackboardServerURL = blackboardServerURL;
 		this.sharedSecret = sharedSecret;
 		this.vendorId = vendorId;
