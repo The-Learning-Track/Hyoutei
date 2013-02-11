@@ -16,7 +16,7 @@ public class QueryApp {
 		this.querycontroller = (QueryController) ctx.getBean("queryController");
 	}
 	
-	public String[] sendCourseQuery() throws RemoteException {
+	public JSONClassList sendCourseQuery() throws RemoteException {
 		querycontroller = (QueryController) ctx.getBean("queryController");
 		return querycontroller.getBlackboardCoursesForUser();	
 	}

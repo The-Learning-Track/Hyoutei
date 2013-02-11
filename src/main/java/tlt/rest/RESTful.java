@@ -5,26 +5,30 @@ import java.rmi.RemoteException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import tlt.queryapp.JSONClassList;
 import tlt.queryapp.QueryApp;
  
-@Path("/hello")
+@Path("/getCourses")
 public class RESTful {
  
 	@GET
 	@Path("/{param}")
-	public Response getMsg(@PathParam("param") String msg) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONClassList getMsg(@PathParam("param") String username) {
 		/* Missing Inputs, going to replace this with SpringSource Application Context */
 		QueryApp query = new QueryApp();
-		String[] output = null;
+		JSONClassList output = null;
 		try{
 			output = query.sendCourseQuery();
 		}
 		catch(RemoteException e){	
 		}
  
-		return Response.status(200).entity(output[0] + output[1]).build();
+		return output;
  
 	}
  

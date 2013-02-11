@@ -20,7 +20,7 @@ public interface QueryInterface {
 	 */
 	public String getCourseInfo(String courseID) throws RemoteException;
 	 
-	public String[] getCourseList(String username) throws RemoteException;
+	public JSONClassList getCourseList(String username) throws RemoteException;
 	
 	public void initializeSOAPhandler(String modulePath, String blackboardServerURL,
 			String sharedSecret, String vendorId, String clientProgramId, String username) throws RemoteException;

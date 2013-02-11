@@ -22,7 +22,7 @@ public class QueryController {
 	 * the instance field username.
 	 * @throws RemoteException 
 	 */
-	public String[] getBlackboardCoursesForUser() throws RemoteException {
+	public JSONClassList getBlackboardCoursesForUser() throws RemoteException {
 		queryService = new QueryService();
 		queryService.initializeSOAPhandler(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId, username);
 		return queryService.getCourseList(username);
