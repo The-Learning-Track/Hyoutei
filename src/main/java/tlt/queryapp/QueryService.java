@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import com.google.gson.Gson;
-
 import edu.emory.mathcs.backport.java.util.Arrays;
 
 import tlt.SOAPclientHelper.Course;
@@ -24,6 +22,7 @@ public class QueryService implements QueryInterface{
 		soaphandler = new SOAPhandler(modulePath, blackboardServerURL, sharedSecret, vendorId, clientProgramId);
 	}
 
+	@SuppressWarnings("unchecked")
 	public JSONClassList getCourseList(String username) throws RemoteException{
 		if(soaphandler.loginTool() == true){
 			String[] courseIDs = soaphandler.getCoursesID(username);
@@ -56,7 +55,7 @@ public class QueryService implements QueryInterface{
 			
 			Iterator<String> studentIter = students.keySet().iterator();
 			while(studentIter.hasNext()){
-				String userid = (String)studentIter.next();
+				String userid = studentIter.next();
 				Student student = students.get(userid);
 				output += "User ID: " + userid;
 				Iterator<String> courseIter = student.getCourses().keySet().iterator();

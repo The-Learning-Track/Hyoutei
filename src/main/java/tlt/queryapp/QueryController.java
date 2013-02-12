@@ -12,7 +12,7 @@ public class QueryController {
 	private String clientProgramId;
 	private String modulePath ;
 	private String sharedSecret ;
-	private String username ;
+
 	
 	/**
 	 * Using the values of the instance fields (see
@@ -20,9 +20,10 @@ public class QueryController {
 	 * object get and display the course titles
 	 * for the Blackboard user identified by 
 	 * the instance field username.
+	 * @param username
 	 * @throws RemoteException 
 	 */
-	public JSONClassList getBlackboardCoursesForUser() throws RemoteException {
+	public JSONClassList getBlackboardCoursesForUser(String username) throws RemoteException {
 		queryService = new QueryService();
 		queryService.initializeSOAPhandler(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId, username);
 		return queryService.getCourseList(username);
@@ -105,17 +106,6 @@ public class QueryController {
 		this.sharedSecret = sharedSecret;
 	}
 
-	
-	public String getUsername() {
-		return username;
-	}
 
-    /**
-     * Set value of Blackboard username.
-     * @param username
-     */
-	public void setUsername(String username) {
-		this.username = username;
-	}
 	
 }

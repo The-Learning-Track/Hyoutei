@@ -7,8 +7,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import tlt.queryapp.JSONClassList;
 import tlt.queryapp.QueryApp;
  
@@ -23,7 +21,7 @@ public class RESTful {
 		QueryApp query = new QueryApp();
 		JSONClassList output = null;
 		try{
-			output = query.sendCourseQuery();
+			output = query.sendCourseQuery(username);
 		}
 		catch(RemoteException e){	
 		}

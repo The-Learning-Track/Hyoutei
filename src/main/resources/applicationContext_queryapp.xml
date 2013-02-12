@@ -18,7 +18,6 @@
    	<property name="clientProgramId" value="${bbws.clientProgramId}" />
    	<property name="modulePath" value="${bbws.modulePath}" />
    	<property name="sharedSecret" value="${bbws.sharedSecret}" />
-   	<property name="username" value="${bbws.username}" />
    </bean>
 
 </beans>
