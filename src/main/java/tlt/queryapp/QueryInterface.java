@@ -2,6 +2,8 @@ package tlt.queryapp;
 
 import java.rmi.RemoteException;
 
+import tlt.JSONobj.JSONClassList;
+
 public interface QueryInterface {
 	
 	

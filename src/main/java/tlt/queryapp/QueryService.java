@@ -7,6 +7,7 @@ import java.util.List;
 
 import edu.emory.mathcs.backport.java.util.Arrays;
 
+import tlt.JSONobj.JSONClassList;
 import tlt.SOAPclientHelper.Course;
 import tlt.SOAPclientHelper.Pair;
 import tlt.SOAPclientHelper.SOAPhandler;

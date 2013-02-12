@@ -1,4 +1,4 @@
-package tlt.queryapp;
+package tlt.JSONobj;
 
 import java.util.List;
 
