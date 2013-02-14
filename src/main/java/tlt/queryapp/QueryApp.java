@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import tlt.JSONobj.JSONClassList;
-import tlt.JSONobj.JSONStudenList;
+import tlt.JSONobj.JSONStudentList;
 import tlt.queryapp.QueryController;
 
 public class QueryApp {
@@ -19,13 +19,11 @@ public class QueryApp {
 	}
 	
 	public JSONClassList sendCourseQuery(String username) throws RemoteException {
-		querycontroller = (QueryController) ctx.getBean("queryController");
 		return querycontroller.getBlackboardCoursesForUser(username);
 	}
 	
-	public JSONStudenList sendGradesQuery(String courseID) throws RemoteException{
-		querycontroller = (QueryController) ctx.getBean("queryController");
-		
+	public JSONStudentList sendGradesQuery(String courseID) throws RemoteException{
+		return querycontroller.getBlackboardGradesForCourse(courseID);
 	}
 	
 }

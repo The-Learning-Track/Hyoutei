@@ -1,5 +1,6 @@
 package tlt.JSONobj;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JSONStudent {
@@ -7,8 +8,16 @@ public class JSONStudent {
 	private String firstName;
 	private String userID;
 	private String seatLocation;
-	
 	private List<JSONgrades> gradeList;
+	
+	public JSONStudent(String lastName, String firstName, String userID){
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.userID = userID;
+		this.seatLocation = "A1";
+		this.gradeList = new ArrayList<JSONgrades>();
+	}
+	
 	public List<JSONgrades> getGradeList() {
 		return gradeList;
 	}

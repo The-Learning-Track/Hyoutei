@@ -20,6 +20,9 @@ import org.apache.rampart.handler.config.OutflowConfiguration;
 import org.apache.ws.security.WSPasswordCallback;
 import org.apache.ws.security.handler.WSHandlerConstants;
 
+import tlt.JSONobj.JSONStudent;
+import tlt.JSONobj.JSONStudentList;
+import tlt.JSONobj.JSONgrades;
 import tlt.WSDLstub.ContextWSStub;
 import tlt.WSDLstub.CourseWSStub;
 import tlt.WSDLstub.GradebookWSStub;
@@ -143,7 +146,7 @@ public class SOAPhandler {
 		loginArgs.setClientVendorId( vendorId );
 		loginArgs.setClientProgramId( clientProgramId );
 		loginArgs.setLoginExtraInfo( "" );
-		loginArgs.setExpectedLifeSeconds( 60 * 60 );
+		loginArgs.setExpectedLifeSeconds( 60*60 );
 
 		//Call the Context Web Services login method 
 		//so that the session id is authorized to access
@@ -284,7 +287,7 @@ public class SOAPhandler {
 		return courseTitles;
 	}
 
-	public List<String> getUserIDs(String courseID) throws RemoteException{
+	public JSONStudentList getUsersInfoforCourse(String courseID) throws RemoteException{
 
 		/* Katsu's Test on obtaining users in a course from Blackboard */
 		/* Create a GetUser object and create a ScodreFilter to find scores by course IDs*/
@@ -325,19 +328,18 @@ public class SOAPhandler {
 		/* Process the response from this web service */
 		UserVO[] userVOs = getUserRespone.get_return();
 
-		/* Print out the Information from the ScoreVOs */
-		ArrayList<String> userID = new ArrayList<String>();
-		for (UserVO userVO : userVOs) {
-			//System.out.println("User ID: " + userVO.getId() + "\tName: " 
-			//		+ userVO.getName() + "\tRole: " + userVO.getInsRoles());
-			userID.add(userVO.getId());
-		}
+		
+		JSONStudentList studentList = new JSONStudentList();
+		for (UserVO userVO : userVOs) 
+			if(userVO.getId()!=null)
+				studentList.getStudentList().add(new JSONStudent(userVO.getExtendedInfo().getFamilyName(),
+					userVO.getExtendedInfo().getGivenName(), userVO.getId()));
 
-		return userID;
+		return studentList;
 	}
 
 
-	public void getUserGrades(Course course, String userID,String courseID) throws RemoteException{
+	public JSONgrades getUserGrades(Course course, String userID,String courseID) throws RemoteException{
 		/* Katsu's Test on obtaining grades from Blackboard */
 		/* Create a GetGrades object and create a ScoreFilter to find scores by course IDs*/
 		GetGrades getGrades = new GetGrades();
@@ -379,13 +381,14 @@ public class SOAPhandler {
 		ScoreVO[] scoreVOs = getGradesRespone.get_return();
 
 
-
+		List<JSONgrades> grades = new ArrayList<JSONgrades>();
+		
+		
 		/* Print out the Information from the ScoreVOs */
 		for (ScoreVO scoreVO : scoreVOs) {
 			course.addGrade(scoreVO.getColumnId(), scoreVO.getGrade());
 		}
-
-
+		return null;
 	}
 
 

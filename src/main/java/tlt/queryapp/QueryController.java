@@ -3,6 +3,7 @@ package tlt.queryapp;
 import java.rmi.RemoteException;
 
 import tlt.JSONobj.JSONClassList;
+import tlt.JSONobj.JSONStudentList;
 
 
 
@@ -27,9 +28,16 @@ public class QueryController {
 	 */
 	public JSONClassList getBlackboardCoursesForUser(String username) throws RemoteException {
 		queryService = new QueryService();
-		queryService.initializeSOAPhandler(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId, username);
+		queryService.initializeSOAPhandler(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId);
 		return queryService.getCourseList(username);
 
+	}
+	
+	public JSONStudentList getBlackboardGradesForCourse(String courseID) throws RemoteException{
+		queryService = new QueryService();
+		queryService.initializeSOAPhandler(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId);
+		return queryService.getStudentList(courseID);
+		
 	}
 	
 	
