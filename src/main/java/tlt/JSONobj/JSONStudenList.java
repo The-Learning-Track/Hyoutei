@@ -2,7 +2,7 @@ package tlt.JSONobj;
 
 import java.util.List;
 
-public class JSONstudenList {
+public class JSONStudenList {
 	private List<JSONStudent> studentList;
 
 	public List<JSONStudent> getStudentList() {
