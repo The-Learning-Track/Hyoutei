@@ -5,7 +5,7 @@ import java.util.List;
 public class JSONStudent {
 	private String lastName;
 	private String firstName;
-	private String studentID;
+	private String userID;
 	private String seatLocation;
 	
 	private List<JSONgrades> gradeList;
@@ -22,10 +22,10 @@ public class JSONStudent {
 		this.seatLocation = seatLocation;
 	}
 	public String getStudentID() {
-		return studentID;
+		return userID;
 	}
 	public void setStudentID(String studentID) {
-		this.studentID = studentID;
+		this.userID = studentID;
 	}
 	public String getFirstName() {
 		return firstName;
