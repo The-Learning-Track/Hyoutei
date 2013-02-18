@@ -2,6 +2,7 @@ package tlt.rest;
  
 import java.rmi.RemoteException;
 
+import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,15 +15,18 @@ import tlt.queryapp.QueryApp;
 @Path("/getCourses")
 public class RESTful {
  
+	@javax.ws.rs.core.Context
+	ServletContext context;
+	
 	@GET
 	@Path("/{param}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public JSONClassList getMsg(@PathParam("param") String username) {
 		/* Missing Inputs, going to replace this with SpringSource Application Context */
-		QueryApp query = new QueryApp();
 		JSONClassList output = null;
+		QueryApp application = (QueryApp)context.getAttribute("Queryapp");
 		try{
-			output = query.sendCourseQuery(username);
+			output = application.sendCourseQuery(username);
 		}
 		catch(RemoteException e){	
 		}

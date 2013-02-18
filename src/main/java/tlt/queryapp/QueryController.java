@@ -26,18 +26,19 @@ public class QueryController {
 	 * @param username
 	 * @throws RemoteException 
 	 */
-	public JSONClassList getBlackboardCoursesForUser(String username) throws RemoteException {
+	
+	public void initializeSOAPhandler() throws RemoteException{
 		queryService = new QueryService();
 		queryService.initializeSOAPhandler(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId);
+	}
+	
+	public JSONClassList getBlackboardCoursesForUser(String username) throws RemoteException {
 		return queryService.getCourseList(username);
 
 	}
 	
 	public JSONStudentList getBlackboardGradesForCourse(String courseID) throws RemoteException{
-		queryService = new QueryService();
-		queryService.initializeSOAPhandler(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId);
 		return queryService.getStudentList(courseID);
-		
 	}
 	
 	

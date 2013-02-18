@@ -6,6 +6,15 @@ public class JSONgrades {
 		private int score;
 		private int totalPoints;
 		private String studentID;
+		
+		public JSONgrades(String assignmentName,int score, int totalPoints,String studentID){
+			this.catagory = "Assignment";
+			this.assignmentName = assignmentName;
+			this.score = score;
+			this.totalPoints = totalPoints;
+			this.studentID = studentID;
+		}
+		
 		public String getStudentID() {
 			return studentID;
 		}

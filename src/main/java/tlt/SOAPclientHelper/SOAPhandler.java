@@ -24,6 +24,7 @@ import tlt.JSONobj.JSONStudent;
 import tlt.JSONobj.JSONStudentList;
 import tlt.JSONobj.JSONgrades;
 import tlt.WSDLstub.ContextWSStub;
+import tlt.WSDLstub.ContextWSStub.LogoutResponse;
 import tlt.WSDLstub.CourseWSStub;
 import tlt.WSDLstub.GradebookWSStub;
 import tlt.WSDLstub.UserWSStub;
@@ -70,6 +71,14 @@ public class SOAPhandler {
 		this.options = null;
 		this.ofc = null;
 		this.pwcb = null;
+	}
+
+	public ContextWSStub getContextWSStub() {
+		return contextWSStub;
+	}
+
+	public void setContextWSStub(ContextWSStub contextWSStub) {
+		this.contextWSStub = contextWSStub;
 	}
 
 	public List<String> courseQuery(String username){
@@ -153,6 +162,9 @@ public class SOAPhandler {
 		//web services 
 		return contextWSStub.loginTool(loginArgs).get_return();
 	}
+	
+	
+	
 
 
 	/**
@@ -193,7 +205,8 @@ public class SOAPhandler {
 
 		for (CourseIdVO courseIdVO : courseIdVOs) {
 
-			courseIds[i] = courseIdVO.getExternalId() ;
+
+
 
 			i++;
 
@@ -339,7 +352,7 @@ public class SOAPhandler {
 	}
 
 
-	public JSONgrades getUserGrades(Course course, String userID,String courseID) throws RemoteException{
+	public List<JSONgrades> getUserGrades(String userID,String courseID) throws RemoteException{
 		/* Katsu's Test on obtaining grades from Blackboard */
 		/* Create a GetGrades object and create a ScoreFilter to find scores by course IDs*/
 		GetGrades getGrades = new GetGrades();
@@ -386,7 +399,7 @@ public class SOAPhandler {
 		
 		/* Print out the Information from the ScoreVOs */
 		for (ScoreVO scoreVO : scoreVOs) {
-			course.addGrade(scoreVO.getColumnId(), scoreVO.getGrade());
+			//grades.add(new JSONgrades(scoreVO.getColumnId(),scoreVO.getGrade(),scoreVO.get))
 		}
 		return null;
 	}
