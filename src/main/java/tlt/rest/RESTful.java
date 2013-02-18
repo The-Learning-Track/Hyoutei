@@ -1,7 +1,5 @@
 package tlt.rest;
  
-import java.rmi.RemoteException;
-
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -28,7 +26,8 @@ public class RESTful {
 		try{
 			output = application.sendCourseQuery(username);
 		}
-		catch(RemoteException e){	
+		catch(Exception e){	
+			return new JSONClassList();
 		}
  
 		return output;

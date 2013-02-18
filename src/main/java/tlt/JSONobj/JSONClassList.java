@@ -6,11 +6,28 @@ public class JSONClassList {
 	private String username;
 	private List<String> courseIDs;
 	private List<String> courseNames;
+	private boolean isRegistered;
 	
 	public JSONClassList(String username, List<String> courseIDs, List<String> courseNames){
 		this.setUsername(username);
 		this.setCourseIDs(courseIDs);
 		this.setCourseNames(courseNames);
+		this.isRegistered = true;
+	}
+	
+	public JSONClassList(){
+		this.setCourseIDs(null);
+		this.setCourseIDs(null);
+		this.setCourseNames(null);
+		this.isRegistered = false;
+	}
+
+	public boolean isRegistered() {
+		return isRegistered;
+	}
+
+	public void setRegistered(boolean isRegistered) {
+		this.isRegistered = isRegistered;
 	}
 
 	public List<String> getCourseNames() {

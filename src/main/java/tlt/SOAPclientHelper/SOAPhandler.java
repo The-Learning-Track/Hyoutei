@@ -204,12 +204,8 @@ public class SOAPhandler {
 		int i = 0;
 
 		for (CourseIdVO courseIdVO : courseIdVOs) {
-
-
-
-
+			courseIds[i] = courseIdVO.getExternalId();
 			i++;
-
 		}
 		return courseIds;
 	}
