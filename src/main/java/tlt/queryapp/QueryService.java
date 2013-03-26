@@ -1,6 +1,7 @@
 package tlt.queryapp;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.emory.mathcs.backport.java.util.Arrays;
@@ -38,8 +39,18 @@ public class QueryService implements QueryInterface{
 
 	public JSONStudentList getStudentList (String courseID) throws RemoteException{
 			JSONStudentList studentList =  soaphandler.getUsersInfoforCourse(courseID);
+			List<String> columnIDs = new ArrayList<>();
+			List<Double> totalPoints = new ArrayList<>();
 			for(JSONStudent student: studentList.getStudentList()){
-				student.setGradeList(soaphandler.getUserGrades(student.getStudentID(),courseID));
+				student.setGradeList(soaphandler.getUserGrades(student.getStudentID(),courseID, columnIDs));
+			}
+
+			/* Get assignment names and total points per column*/
+			soaphandler.getAssignmentNames(courseID, columnIDs.toArray(new String[columnIDs.size()]), totalPoints);
+			
+			/* Populate the grade data structure */
+			for(JSONStudent student: studentList.getStudentList()){
+				student.setGradeList(soaphandler.getUserGrades(student.getStudentID(),courseID, columnIDs));
 			}
 			return studentList;
 
