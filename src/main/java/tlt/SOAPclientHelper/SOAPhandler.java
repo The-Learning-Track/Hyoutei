@@ -27,6 +27,8 @@ import tlt.WSDLstub.ContextWSStub;
 import tlt.WSDLstub.ContextWSStub.LogoutResponse;
 import tlt.WSDLstub.CourseWSStub;
 import tlt.WSDLstub.GradebookWSStub;
+import tlt.WSDLstub.GradebookWSStub.ColumnVO;
+import tlt.WSDLstub.GradebookWSStub.GetGradebookColumns;
 import tlt.WSDLstub.UserWSStub;
 import tlt.WSDLstub.ContextWSStub.CourseIdVO;
 import tlt.WSDLstub.ContextWSStub.GetMemberships;
@@ -36,6 +38,8 @@ import tlt.WSDLstub.CourseWSStub.CourseFilter;
 import tlt.WSDLstub.CourseWSStub.CourseVO;
 import tlt.WSDLstub.CourseWSStub.GetCourse;
 import tlt.WSDLstub.CourseWSStub.GetCourseResponse;
+import tlt.WSDLstub.GradebookWSStub.ColumnFilter;
+import tlt.WSDLstub.GradebookWSStub.GetGradebookColumnsResponse;
 import tlt.WSDLstub.GradebookWSStub.GetGrades;
 import tlt.WSDLstub.GradebookWSStub.GetGradesResponse;
 import tlt.WSDLstub.GradebookWSStub.ScoreFilter;
@@ -346,7 +350,55 @@ public class SOAPhandler {
 
 		return studentList;
 	}
+	public List<String> getAssignmentNames(String courseID, String[] ids) throws RemoteException{
+		/* Katsu's Test on obtaining grades from Blackboard */
+		/* Create a GetGrades object and create a ScoreFilter to find scores by course IDs*/
+		GetGradebookColumns getGradesbookColumns = new GetGradebookColumns();
+		ColumnFilter filter = new ColumnFilter();
+		filter.setFilterType(1);
+		filter.setIds(ids);
+		getGradesbookColumns.setFilter((filter));
+		getGradesbookColumns.setCourseId(courseID);
 
+		/* Use the Gradebook web service classes to get the Gradebook value object for each course ID 
+		 * stored in the courseIds array.*/
+		GradebookWSStub gradebookWSSstub = new GradebookWSStub(ctx,
+				"http://" + blackboardServerURL + "/webapps/ws/services/Gradebook.WS");
+		client = gradebookWSSstub._getServiceClient();
+		options = client.getOptions();
+		options.setProperty(HTTPConstants.HTTP_PROTOCOL_VERSION,
+				HTTPConstants.HEADER_PROTOCOL_10);
+
+		/* Setup the WS-Security for the request to this web service
+		 * NOTE: that we will re-use the same callback handler (with its session ID)
+		 *  as the previous web service request used.
+		 */
+
+		// Next, setup ws-security settings & Reuse the same callback handler
+		options.setProperty(WSHandlerConstants.PW_CALLBACK_REF, pwcb);
+		ofc = new OutflowConfiguration();
+		ofc.setActionItems("UsernameToken Timestamp");
+		ofc.setUser("session");
+
+		ofc.setPasswordType("PasswordText");
+		options.setProperty(WSSHandlerConstants.OUTFLOW_SECURITY, ofc
+				.getProperty());
+		client.engageModule("rampart");
+
+		/* Make the request to this web service	 */
+		GetGradebookColumnsResponse getGradeColumnResponse = gradebookWSSstub.getGradebookColumns(getGradesbookColumns);
+
+		/* Process the response from this web service */
+		ColumnVO[] columnVOs = getGradeColumnResponse.get_return();
+
+		List<String> assignmentNames = new ArrayList<String>();
+		
+		/* Print out the Information from the ScoreVOs */
+		for (ColumnVO columnVO : columnVOs) {
+			assignmentNames.add(columnVO.getColumnName());
+		}
+		return assignmentNames;
+	}
 
 	public List<JSONgrades> getUserGrades(String userID,String courseID) throws RemoteException{
 		/* Katsu's Test on obtaining grades from Blackboard */
