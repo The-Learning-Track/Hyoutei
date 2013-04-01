@@ -25,7 +25,7 @@ public class GetCourseGrades {
 				output = application.sendGradesQuery(courseId);
 			}
 			catch(Exception e){	
-				return new JSONStudentList();
+				e.printStackTrace();
 			}
 	 
 			return output;
