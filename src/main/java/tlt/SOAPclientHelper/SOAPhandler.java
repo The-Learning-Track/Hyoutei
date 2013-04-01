@@ -401,7 +401,7 @@ public class SOAPhandler {
 		return assignmentNames;
 	}
 
-	public List<JSONgrades> getUserGrades(String userID,String courseID,List<String> columnIDs) throws RemoteException{
+	public List<JSONgrades> getUserGrades(String userID,String courseID) throws RemoteException{
 		/* Katsu's Test on obtaining grades from Blackboard */
 		/* Create a GetGrades object and create a ScoreFilter to find scores by course IDs*/
 		GetGrades getGrades = new GetGrades();
@@ -448,8 +448,9 @@ public class SOAPhandler {
 		
 		/* Print out the Information from the ScoreVOs */
 		for (ScoreVO scoreVO : scoreVOs) {
-			grades.add(new JSONgrades(scoreVO.getColumnId(),Double.parseDouble(scoreVO.getGrade()),userID));
-			columnIDs.add(scoreVO.getColumnId());
+			String grade = scoreVO.getGrade();
+			if(!grade.equalsIgnoreCase(""))
+				grades.add(new JSONgrades(scoreVO.getColumnId(),Double.parseDouble(grade),userID));
 		}
 		return grades;
 	}
