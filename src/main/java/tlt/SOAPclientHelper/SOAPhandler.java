@@ -20,11 +20,12 @@ import org.apache.rampart.handler.config.OutflowConfiguration;
 import org.apache.ws.security.WSPasswordCallback;
 import org.apache.ws.security.handler.WSHandlerConstants;
 
+import tlt.JSONobj.JSONAssignment;
+import tlt.JSONobj.JSONCourseAssignmentInfo;
 import tlt.JSONobj.JSONStudent;
 import tlt.JSONobj.JSONStudentList;
 import tlt.JSONobj.JSONgrades;
 import tlt.WSDLstub.ContextWSStub;
-import tlt.WSDLstub.ContextWSStub.LogoutResponse;
 import tlt.WSDLstub.CourseWSStub;
 import tlt.WSDLstub.GradebookWSStub;
 import tlt.WSDLstub.GradebookWSStub.ColumnVO;
@@ -350,13 +351,12 @@ public class SOAPhandler {
 
 		return studentList;
 	}
-	public List<String> getAssignmentNames(String courseID, String[] columnIDs,List<Double> totalPoints) throws RemoteException{
+	public JSONCourseAssignmentInfo getAssignmentInfo(String courseID) throws RemoteException{
 		/* Katsu's Test on obtaining grades from Blackboard */
 		/* Create a GetGrades object and create a ScoreFilter to find scores by course IDs*/
 		GetGradebookColumns getGradesbookColumns = new GetGradebookColumns();
 		ColumnFilter filter = new ColumnFilter();
 		filter.setFilterType(1);
-		filter.setIds(columnIDs);
 		getGradesbookColumns.setFilter((filter));
 		getGradesbookColumns.setCourseId(courseID);
 
@@ -391,14 +391,13 @@ public class SOAPhandler {
 		/* Process the response from this web service */
 		ColumnVO[] columnVOs = getGradeColumnResponse.get_return();
 
-		List<String> assignmentNames = new ArrayList<String>();
+		JSONCourseAssignmentInfo courseAssignmentInfo = new JSONCourseAssignmentInfo();
 		
 		/* Print out the Information from the ScoreVOs */
 		for (ColumnVO columnVO : columnVOs) {
-			assignmentNames.add(columnVO.getColumnName());
-			totalPoints.add(columnVO.getPossible());
+				courseAssignmentInfo.getCourseInfo().add(new JSONAssignment(columnVO.getPossible(),columnVO.getId(),columnVO.getColumnName()));
 		}
-		return assignmentNames;
+		return courseAssignmentInfo;
 	}
 
 	public List<JSONgrades> getUserGrades(String userID,String courseID) throws RemoteException{

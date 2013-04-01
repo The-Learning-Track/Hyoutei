@@ -1,12 +1,12 @@
 package tlt.queryapp;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.emory.mathcs.backport.java.util.Arrays;
 
 import tlt.JSONobj.JSONClassList;
+import tlt.JSONobj.JSONCourseAssignmentInfo;
 import tlt.JSONobj.JSONStudent;
 import tlt.JSONobj.JSONStudentList;
 import tlt.SOAPclientHelper.SOAPhandler;
@@ -44,6 +44,10 @@ public class QueryService implements QueryInterface{
 			}
 			return studentList;
 
+	}
+	
+	public JSONCourseAssignmentInfo getAssignmentInfo(String courseID) throws RemoteException{
+		return soaphandler.getAssignmentInfo(courseID);
 	}
 
 }

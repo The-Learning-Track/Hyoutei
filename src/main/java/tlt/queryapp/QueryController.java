@@ -3,6 +3,7 @@ package tlt.queryapp;
 import java.rmi.RemoteException;
 
 import tlt.JSONobj.JSONClassList;
+import tlt.JSONobj.JSONCourseAssignmentInfo;
 import tlt.JSONobj.JSONStudentList;
 
 
@@ -39,6 +40,10 @@ public class QueryController {
 	
 	public JSONStudentList getBlackboardGradesForCourse(String courseID) throws RemoteException{
 		return queryService.getStudentList(courseID);
+	}
+	
+	public JSONCourseAssignmentInfo getAssignmentInfoForCourse(String courseID) throws RemoteException{
+		return queryService.getAssignmentInfo(courseID);
 	}
 	
 	

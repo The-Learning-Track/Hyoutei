@@ -3,7 +3,6 @@ package tlt.JSONobj;
 public class JSONgrades {
 		private String catagory;
 		private double score;
-		private double totalPoints;
 		private String columnID;
 		private String studentID;
 		
