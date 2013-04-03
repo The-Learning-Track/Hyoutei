@@ -24,7 +24,7 @@ public class QueryService implements QueryInterface{
 	@SuppressWarnings("unchecked")
 	public JSONClassList getCourseList(String username) throws RemoteException{
 			String[] courseIDs = soaphandler.getCoursesID(username);
-			List<String> courseNames = soaphandler.getCourseNames(courseIDs, username);
+			List<String> courseNames = soaphandler.getCourseNames(courseIDs);
 			return new JSONClassList(username, Arrays.asList(courseIDs), courseNames);
 
 	}
@@ -37,11 +37,15 @@ public class QueryService implements QueryInterface{
 		this.soaphandler = soaphandler;
 	}
 
-	public JSONStudentList getStudentList (String courseID) throws RemoteException{
+	public JSONStudentList getStudentList (String courseID,String username) throws RemoteException{
+		    String userID = soaphandler.getuserID(username);
 			JSONStudentList studentList =  soaphandler.getUsersInfoforCourse(courseID);
 			for(JSONStudent student: studentList.getStudentList()){
 				student.setGradeList(soaphandler.getUserGrades(student.getStudentID(),courseID));
 			}
+			//soaphandler.checkIfInstructor(userID, courseID);
+			
+			
 			return studentList;
 
 	}

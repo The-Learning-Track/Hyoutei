@@ -57,8 +57,8 @@ public class QueryApp {
 		return querycontroller.getBlackboardCoursesForUser(username);
 	}
 	
-	public JSONStudentList sendGradesQuery(String courseID) throws RemoteException{
-		return querycontroller.getBlackboardGradesForCourse(courseID);
+	public JSONStudentList sendGradesQuery(String courseID, String userID) throws RemoteException{
+		return querycontroller.getBlackboardGradesForCourse(courseID, userID);
 	}
 	
 	public JSONCourseAssignmentInfo sendAssignmentQuery(String courseID) throws RemoteException{

@@ -38,8 +38,8 @@ public class QueryController {
 
 	}
 	
-	public JSONStudentList getBlackboardGradesForCourse(String courseID) throws RemoteException{
-		return queryService.getStudentList(courseID);
+	public JSONStudentList getBlackboardGradesForCourse(String courseID, String userID) throws RemoteException{
+		return queryService.getStudentList(courseID, userID);
 	}
 	
 	public JSONCourseAssignmentInfo getAssignmentInfoForCourse(String courseID) throws RemoteException{
