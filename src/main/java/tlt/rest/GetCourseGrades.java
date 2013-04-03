@@ -16,13 +16,14 @@ public class GetCourseGrades {
 		ServletContext context;
 		
 		@GET
-		@Path("/{param}")
+		@Path("/{courseId}/{userID}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public JSONStudentList getMsg(@PathParam("param") String courseId) {
+		public JSONStudentList getMsg(@PathParam("courseId") String courseId,
+										@PathParam("userID") String userID) {
 			JSONStudentList output = null;
 			QueryApp application = (QueryApp)context.getAttribute("Queryapp");
 			try{
-				output = application.sendGradesQuery(courseId);
+				output = application.sendGradesQuery(courseId,userID);
 			}
 			catch(Exception e){	
 				e.printStackTrace();
