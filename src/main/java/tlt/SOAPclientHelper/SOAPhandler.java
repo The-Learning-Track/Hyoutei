@@ -498,7 +498,7 @@ public class SOAPhandler {
 		/* Process the response from this web service */
 		CourseMembershipVO[] courseMembershipVOs = courseMembershipResponse.get_return();
 
-
+		/* Checks for a "P" in the role id to signify that the user is an instructor */
 		for(CourseMembershipVO courseMembershipVO : courseMembershipVOs){
 			if(courseMembershipVO.getRoleId().equals("P"))
 				return true;
