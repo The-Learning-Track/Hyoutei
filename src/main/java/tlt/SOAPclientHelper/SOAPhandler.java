@@ -26,6 +26,13 @@ import tlt.JSONobj.JSONStudent;
 import tlt.JSONobj.JSONStudentList;
 import tlt.JSONobj.JSONgrades;
 import tlt.WSDLstub.ContextWSStub;
+import tlt.WSDLstub.CourseMembershipWSStub;
+import tlt.WSDLstub.CourseMembershipWSStub.CourseMembershipVO;
+import tlt.WSDLstub.CourseMembershipWSStub.CourseRoleFilter;
+import tlt.WSDLstub.CourseMembershipWSStub.GetCourseMembership;
+import tlt.WSDLstub.CourseMembershipWSStub.GetCourseMembershipResponse;
+import tlt.WSDLstub.CourseMembershipWSStub.GetCourseRoles;
+import tlt.WSDLstub.CourseMembershipWSStub.MembershipFilter;
 import tlt.WSDLstub.CourseWSStub;
 import tlt.WSDLstub.GradebookWSStub;
 import tlt.WSDLstub.GradebookWSStub.ColumnVO;
@@ -84,10 +91,6 @@ public class SOAPhandler {
 
 	public void setContextWSStub(ContextWSStub contextWSStub) {
 		this.contextWSStub = contextWSStub;
-	}
-
-	public List<String> courseQuery(String username){
-		return null;
 	}
 
 	public boolean loginTool() throws RemoteException{
@@ -215,7 +218,7 @@ public class SOAPhandler {
 		return courseIds;
 	}
 
-	public List<String> getCourseNames(String[] courseIds,String username) throws RemoteException{
+	public List<String> getCourseNames(String[] courseIds) throws RemoteException{
 		/*
 		 * Create a GetCourse object that is used
 		 * to specify how we want the Course web
@@ -337,10 +340,10 @@ public class SOAPhandler {
 		client.engageModule("rampart");
 
 		/* Make the request to this web service	 */
-		GetUserResponse getUserRespone = userWSSstub.getUser(getUser);
+		GetUserResponse getUserResponse = userWSSstub.getUser(getUser);
 
 		/* Process the response from this web service */
-		UserVO[] userVOs = getUserRespone.get_return();
+		UserVO[] userVOs = getUserResponse.get_return();
 
 		
 		JSONStudentList studentList = new JSONStudentList();
@@ -455,6 +458,109 @@ public class SOAPhandler {
 	}
 
 
+	public boolean checkIfInstructor(String userID, String courseID) throws RemoteException{
+		/* Katsu's Test on obtaining grades from Blackboard */
+		/* Create a GetGrades object and create a ScoreFilter to find scores by course IDs*/
+		GetCourseMembership courseMembership = new GetCourseMembership();
+		MembershipFilter filter = new MembershipFilter();
+		filter.setFilterType(6);
+		filter.setUserIds(new String[]{userID});
+		courseMembership.setF(filter);
+		courseMembership.setCourseId(courseID);
+
+		/* Use the Gradebook web service classes to get the Gradebook value object for each course ID 
+		 * stored in the courseIds array.*/
+		CourseMembershipWSStub coursemembershipWSSstub = new CourseMembershipWSStub(ctx,
+				"http://" + blackboardServerURL + "/webapps/ws/services/CourseMembership.WS");
+		client = coursemembershipWSSstub._getServiceClient();
+		options = client.getOptions();
+		options.setProperty(HTTPConstants.HTTP_PROTOCOL_VERSION,
+				HTTPConstants.HEADER_PROTOCOL_10);
+
+		/* Setup the WS-Security for the request to this web service
+		 * NOTE: that we will re-use the same callback handler (with its session ID)
+		 *  as the previous web service request used.
+		 */
+
+		// Next, setup ws-security settings & Reuse the same callback handler
+		options.setProperty(WSHandlerConstants.PW_CALLBACK_REF, pwcb);
+		ofc = new OutflowConfiguration();
+		ofc.setActionItems("UsernameToken Timestamp");
+		ofc.setUser("session");
+
+		ofc.setPasswordType("PasswordText");
+		options.setProperty(WSSHandlerConstants.OUTFLOW_SECURITY, ofc
+				.getProperty());
+		client.engageModule("rampart");
+
+			
+		GetCourseMembershipResponse courseMembershipResponse = coursemembershipWSSstub.getCourseMembership(courseMembership);
+		/* Process the response from this web service */
+		CourseMembershipVO[] courseMembershipVOs = courseMembershipResponse.get_return();
+
+
+		for(CourseMembershipVO courseMembershipVO : courseMembershipVOs){
+			System.out.println(courseMembershipVO.getUserId());
+		}
+		
+		
+		return true;
+	}
+	
+	public String getuserID(String username) throws RemoteException{
+
+		// Katsu's Test on obtaining users in a course from Blackboard 
+		// Create a GetUser object and create a ScodreFilter to find scores by course IDs
+		UserFilter userFilter = new UserFilter();
+		userFilter.setFilterType(6);
+		userFilter.setId(new String[]{username});
+		GetUser getUser = new GetUser();
+		getUser.setFilter(userFilter);
+
+		// Use the User web service classes to get the user value object for each course ID 
+		// stored in the courseIds array.
+		UserWSStub userWSSstub = new UserWSStub(ctx,
+				"http://" + blackboardServerURL + "/webapps/ws/services/User.WS");
+		client = userWSSstub._getServiceClient();
+		options = client.getOptions();
+		options.setProperty(HTTPConstants.HTTP_PROTOCOL_VERSION,
+				HTTPConstants.HEADER_PROTOCOL_10);
+
+		 //Setup the WS-Security for the request to this web service
+		 // NOTE: that we will re-use the same callback handler (with its session ID)
+		 // as the previous web service request used.
+		 
+
+		// Next, setup ws-security settings & Reuse the same callback handler
+		options.setProperty(WSHandlerConstants.PW_CALLBACK_REF, pwcb);
+		ofc = new OutflowConfiguration();
+		ofc.setActionItems("UsernameToken Timestamp");
+		ofc.setUser("session");
+
+		ofc.setPasswordType("PasswordText");
+		options.setProperty(WSSHandlerConstants.OUTFLOW_SECURITY, ofc
+				.getProperty());
+		client.engageModule("rampart");
+
+		//Make the request to this web service	 
+		GetUserResponse getUserResponse = userWSSstub.getUser(getUser);
+
+		//Process the response from this web service 
+		UserVO[] userVOs = getUserResponse.get_return();
+
+		
+		for (UserVO userVO : userVOs) 
+			if(userVO.getId()!=null)
+				return userVO.getId();
+
+		return null;
+		
+		
+	}
+	
+	
+	
+	
 	/**
 	 * Store the session id value associated with the logged 
 	 * in Blackboard web service.
