@@ -4,8 +4,8 @@ import java.rmi.RemoteException;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import tlt.JSONobj.JSONClassList;
+import tlt.JSONobj.JSONCourseAssignmentInfo;
 import tlt.JSONobj.JSONStudentList;
 import tlt.SOAPclientHelper.SOAPhandler;
 import tlt.queryapp.QueryController;
@@ -57,8 +57,12 @@ public class QueryApp {
 		return querycontroller.getBlackboardCoursesForUser(username);
 	}
 	
-	public JSONStudentList sendGradesQuery(String courseID) throws RemoteException{
-		return querycontroller.getBlackboardGradesForCourse(courseID);
+	public JSONStudentList sendGradesQuery(String courseID, String userID) throws RemoteException{
+		return querycontroller.getBlackboardGradesForCourse(courseID, userID);
+	}
+	
+	public JSONCourseAssignmentInfo sendAssignmentQuery(String courseID) throws RemoteException{
+		return querycontroller.getAssignmentInfoForCourse(courseID);
 	}
 	
 }
