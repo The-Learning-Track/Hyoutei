@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
@@ -396,9 +398,27 @@ public class SOAPhandler {
 
 		JSONCourseAssignmentInfo courseAssignmentInfo = new JSONCourseAssignmentInfo();
 		
+		/* Setup a regex to check for homeworks, labs and exams as the column name */
+
+		Pattern homeworkPattern = Pattern.compile("(?i)homework");
+		Pattern labPattern = Pattern.compile("(?i)lab");
+		Pattern examPattern = Pattern.compile("(?i)exam");
+
+		
+		
 		/* Print out the Information from the ScoreVOs */
 		for (ColumnVO columnVO : columnVOs) {
-				courseAssignmentInfo.getCourseInfo().add(new JSONAssignment(columnVO.getPossible(),columnVO.getId(),columnVO.getColumnName()));
+			String text = "homework 1";
+			Matcher matchHomework = homeworkPattern.matcher(text);
+			Matcher matchLab = labPattern.matcher(text);
+			Matcher matchExam = examPattern.matcher(text);
+			
+			if(matchExam.find())
+				courseAssignmentInfo.getCourseInfo().add(new JSONAssignment(columnVO.getPossible(),columnVO.getId(),columnVO.getColumnName(),"Exam"));
+			else if(matchHomework.find())
+				courseAssignmentInfo.getCourseInfo().add(new JSONAssignment(columnVO.getPossible(),columnVO.getId(),columnVO.getColumnName(),"Homework"));
+			else if(matchLab.find())
+				courseAssignmentInfo.getCourseInfo().add(new JSONAssignment(columnVO.getPossible(),columnVO.getId(),columnVO.getColumnName(),"Lab"));
 		}
 		return courseAssignmentInfo;
 	}
