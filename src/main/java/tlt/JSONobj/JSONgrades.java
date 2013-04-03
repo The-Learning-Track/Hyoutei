@@ -1,13 +1,11 @@
 package tlt.JSONobj;
 
 public class JSONgrades {
-		private String catagory;
 		private double score;
 		private String columnID;
 		private String studentID;
 		
 		public JSONgrades(String columnID,double score,String studentID){
-			this.catagory = "Assignment";
 			this.columnID = columnID;
 			this.score = score;
 			this.studentID = studentID;
@@ -24,12 +22,6 @@ public class JSONgrades {
 		}
 		public void setScore(int score) {
 			this.score = score;
-		}
-		public String getCatagory() {
-			return catagory;
-		}
-		public void setCatagory(String catagory) {
-			this.catagory = catagory;
 		}
 		public String getColumnID(){
 			return columnID;
