@@ -408,7 +408,7 @@ public class SOAPhandler {
 		
 		/* Print out the Information from the ScoreVOs */
 		for (ColumnVO columnVO : columnVOs) {
-			String text = "homework 1";
+			String text = columnVO.getColumnName();
 			Matcher matchHomework = homeworkPattern.matcher(text);
 			Matcher matchLab = labPattern.matcher(text);
 			Matcher matchExam = examPattern.matcher(text);
