@@ -25,7 +25,7 @@ public interface QueryInterface {
 	 
 	public JSONClassList getCourseList(String username) throws RemoteException;
 	
-	public JSONStudentList getStudentList (String courseID) throws RemoteException;
+	public JSONStudentList getStudentList (String courseID, String username) throws RemoteException;
 	
 	public void initializeSOAPhandler(String modulePath, String blackboardServerURL,
 			String sharedSecret, String vendorId, String clientProgramId) throws RemoteException;

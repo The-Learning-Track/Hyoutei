@@ -17,7 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class RegisterProxyToolApp {
 
 	ApplicationContext ctx = new ClassPathXmlApplicationContext(
-   "applicationContext_BBWS.xml");
+   "applicationContext_registertool.xml");
 	
 	RegisterToolController registerToolController;
 	/**

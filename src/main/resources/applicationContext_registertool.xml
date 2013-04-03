@@ -37,6 +37,7 @@
    			<value>Gradebook.WS:getGrades</value>
    			<value>Gradebook.WS:getGradebookColumns</value>
    			<value>User.WS:getUser</value>
+   			<value>CourseMembership.WS:getCourseMembership</value>
    		</list>
    	</property>
    	
