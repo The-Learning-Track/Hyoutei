@@ -500,11 +500,13 @@ public class SOAPhandler {
 
 
 		for(CourseMembershipVO courseMembershipVO : courseMembershipVOs){
-			System.out.println(courseMembershipVO.getUserId());
+			if(courseMembershipVO.getRoleId().equals("P"))
+				return true;
+			
 		}
 		
 		
-		return true;
+		return false;
 	}
 	
 	public String getuserID(String username) throws RemoteException{
@@ -513,7 +515,7 @@ public class SOAPhandler {
 		// Create a GetUser object and create a ScodreFilter to find scores by course IDs
 		UserFilter userFilter = new UserFilter();
 		userFilter.setFilterType(6);
-		userFilter.setId(new String[]{username});
+		userFilter.setName(new String[]{username});
 		GetUser getUser = new GetUser();
 		getUser.setFilter(userFilter);
 

@@ -43,9 +43,8 @@ public class QueryService implements QueryInterface{
 			for(JSONStudent student: studentList.getStudentList()){
 				student.setGradeList(soaphandler.getUserGrades(student.getStudentID(),courseID));
 			}
-			//soaphandler.checkIfInstructor(userID, courseID);
-			
-			
+			studentList.setInstructor(soaphandler.checkIfInstructor(userID, courseID));
+
 			return studentList;
 
 	}
