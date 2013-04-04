@@ -165,7 +165,7 @@ public class SOAPhandler {
 		loginArgs.setClientVendorId( vendorId );
 		loginArgs.setClientProgramId( clientProgramId );
 		loginArgs.setLoginExtraInfo( "" );
-		loginArgs.setExpectedLifeSeconds( 60*60 );
+		loginArgs.setExpectedLifeSeconds(3600);
 
 		//Call the Context Web Services login method 
 		//so that the session id is authorized to access
