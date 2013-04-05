@@ -4,12 +4,14 @@ import java.util.List;
 
 public class JSONClassList {
 	private String username;
+	private String userID;
 	private List<String> courseIDs;
 	private List<String> courseNames;
 	private boolean isRegistered;
 	
-	public JSONClassList(String username, List<String> courseIDs, List<String> courseNames){
+	public JSONClassList(String username, List<String> courseIDs, List<String> courseNames, String userID){
 		this.setUsername(username);
+		this.setUserID(userID);
 		this.setCourseIDs(courseIDs);
 		this.setCourseNames(courseNames);
 		this.isRegistered = true;
@@ -20,6 +22,14 @@ public class JSONClassList {
 		this.setCourseIDs(null);
 		this.setCourseNames(null);
 		this.isRegistered = false;
+	}
+
+	public String getUserID() {
+		return userID;
+	}
+
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
 	public boolean isRegistered() {

@@ -25,7 +25,8 @@ public class QueryService implements QueryInterface{
 	public JSONClassList getCourseList(String username) throws RemoteException{
 			String[] courseIDs = soaphandler.getCoursesID(username);
 			List<String> courseNames = soaphandler.getCourseNames(courseIDs);
-			return new JSONClassList(username, Arrays.asList(courseIDs), courseNames);
+			String userID = soaphandler.getuserID(username);
+			return new JSONClassList(username, Arrays.asList(courseIDs), courseNames,userID);
 
 	}
 
