@@ -19,11 +19,11 @@ public class GetCourseGrades {
 		@Path("/{courseId}/{userID}")
 		@Produces(MediaType.APPLICATION_JSON)
 		public JSONStudentList getMsg(@PathParam("courseId") String courseId,
-										@PathParam("userID") String userID) {
+										@PathParam("userID") String username) {
 			JSONStudentList output = null;
 			QueryApp application = (QueryApp)context.getAttribute("Queryapp");
 			try{
-				output = application.sendGradesQuery(courseId,userID);
+				output = application.sendGradesQuery(courseId,username);
 			}
 			catch(Exception e){	
 				e.printStackTrace();

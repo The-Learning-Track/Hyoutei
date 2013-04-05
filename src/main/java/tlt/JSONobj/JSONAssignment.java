@@ -4,23 +4,23 @@ public class JSONAssignment {
 	private Double possiblePoints;
 	private String columnId;
 	private String assignmentNames;
-	private String catagory;
+	private String category;
 	
 
 
-	public JSONAssignment(Double possiblePoints, String columnID, String assignmentNames, String catagory){
+	public JSONAssignment(Double possiblePoints, String columnID, String assignmentNames, String category){
 		this.possiblePoints = possiblePoints;
 		this.columnId = columnID;
 		this.assignmentNames = assignmentNames;
-		this.catagory = catagory;
+		this.category = category;
 	}
 	
 	public String getCatagory() {
-		return catagory;
+		return category;
 	}
 
-	public void setCatagory(String catagory) {
-		this.catagory = catagory;
+	public void setCatagory(String category) {
+		this.category = category;
 	}
 	public Double getPossiblePoints() {
 		return possiblePoints;
