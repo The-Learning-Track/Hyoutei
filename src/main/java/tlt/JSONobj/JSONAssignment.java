@@ -15,11 +15,11 @@ public class JSONAssignment {
 		this.category = category;
 	}
 	
-	public String getCatagory() {
+	public String getCategory() {
 		return category;
 	}
 
-	public void setCatagory(String category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 	public Double getPossiblePoints() {
