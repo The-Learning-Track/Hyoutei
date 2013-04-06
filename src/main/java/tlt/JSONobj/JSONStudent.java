@@ -6,12 +6,14 @@ public class JSONStudent {
 	private String lastName;
 	private String firstName;
 	private String userID;
+	private String username;
 	private List<JSONgrades> gradeList;
 	
-	public JSONStudent(String lastName, String firstName, String userID){
+	public JSONStudent(String lastName, String firstName, String userID, String username){
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.userID = userID;
+		this.username = username;
 		this.gradeList = null;
 	}
 	
@@ -38,5 +40,13 @@ public class JSONStudent {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

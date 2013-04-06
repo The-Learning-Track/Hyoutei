@@ -5,18 +5,18 @@ import java.util.List;
 
 public class JSONSeatList {
 	private List<String> seatLocation;
-	private List<String> studentIDs;
+	private List<String> usernames;
 	
 	public JSONSeatList(){
 		seatLocation = new ArrayList<String>();
-		studentIDs = new ArrayList<String>();
+		usernames = new ArrayList<String>();
 	}
 	
-	public List<String> getStudentIDs() {
-		return studentIDs;
+	public List<String> getUsernames() {
+		return usernames;
 	}
-	public void setStudentIDs(List<String> studentIDs) {
-		this.studentIDs = studentIDs;
+	public void setUsernames(List<String> studentIDs) {
+		this.usernames = studentIDs;
 	}
 	public List<String> getSeatLocation() {
 		return seatLocation;

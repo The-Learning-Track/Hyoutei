@@ -1,7 +1,10 @@
 package tlt.rest;
 
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
@@ -9,21 +12,21 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
 import tlt.JSONobj.JSONSeatList;
 
+@Path("/clearSeats")
+public class ClearSeats {
 
-@Path("/getSeats")
-public class GetSeats {
-	private static final String SEAT_LOCATIONS_FOR_COURSE = "SELECT seatlocation, username FROM students WHERE courseid = ?";
-	
+private static final String CLEAR_ALL_SEAT = "DELETE FROM students WHERE courseid = ?";
 	
 	@javax.ws.rs.core.Context
 	ServletContext context;
 	
 	@GET
-	@Path("/{param}")
+	@Path("/{courseID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public JSONSeatList getMsg(@PathParam("param") String courseID) {
+	public JSONSeatList getMsg(@PathParam("courseID") String courseID) {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
@@ -41,14 +44,9 @@ public class GetSeats {
 
         try {
             conn = DriverManager.getConnection(url, user, password);
-			stmt = conn.prepareStatement(SEAT_LOCATIONS_FOR_COURSE);
+			stmt = conn.prepareStatement(CLEAR_ALL_SEAT);
 			stmt.setString(1,courseID);
-			rs = stmt.executeQuery();
-			while(rs.next()) {
-				output.getSeatLocation().add(rs.getString("seatlocation"));
-				output.getUsernames().add(rs.getString("username"));
-			}
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -70,5 +68,4 @@ public class GetSeats {
 		return output;
  
 	}
- 
 }

@@ -30,10 +30,8 @@ import tlt.JSONobj.JSONgrades;
 import tlt.WSDLstub.ContextWSStub;
 import tlt.WSDLstub.CourseMembershipWSStub;
 import tlt.WSDLstub.CourseMembershipWSStub.CourseMembershipVO;
-import tlt.WSDLstub.CourseMembershipWSStub.CourseRoleFilter;
 import tlt.WSDLstub.CourseMembershipWSStub.GetCourseMembership;
 import tlt.WSDLstub.CourseMembershipWSStub.GetCourseMembershipResponse;
-import tlt.WSDLstub.CourseMembershipWSStub.GetCourseRoles;
 import tlt.WSDLstub.CourseMembershipWSStub.MembershipFilter;
 import tlt.WSDLstub.CourseWSStub;
 import tlt.WSDLstub.GradebookWSStub;
@@ -352,7 +350,7 @@ public class SOAPhandler {
 		for (UserVO userVO : userVOs) 
 			if(userVO.getId()!=null)
 				studentList.getStudentList().add(new JSONStudent(userVO.getExtendedInfo().getFamilyName(),
-					userVO.getExtendedInfo().getGivenName(), userVO.getId()));
+					userVO.getExtendedInfo().getGivenName(), userVO.getId(), userVO.getName()));
 
 		return studentList;
 	}

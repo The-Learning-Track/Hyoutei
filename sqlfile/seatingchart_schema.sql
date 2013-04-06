@@ -11,10 +11,10 @@ CREATE TABLE courses
 
 CREATE TABLE students
   ( 
-	uid 	VARCHAR(255) NOT NULL,     
+	username 	VARCHAR(255) NOT NULL,     
 	seatlocation 	VARCHAR(255) NOT NULL,
 	courseid 	VARCHAR(255) REFERENCES courses(courseid),
-	CONSTRAINT students_pk PRIMARY KEY(uid)
+	CONSTRAINT students_pk PRIMARY KEY(username)
   );
 
 
@@ -22,7 +22,7 @@ INSERT INTO courses (courseid)
 	VALUES('_107_1');
 INSERT INTO courses (courseid)
 	VALUES('_108_1');
-INSERT INTO students (uid,seatlocation,courseid)
-	VALUES('_10100_1','A1','_107_1');
-INSERT INTO students (uid,seatlocation,courseid)
-	VALUES('_10101_1','B1','_107_1');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('dicksonp','A1','_107_1');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('realpxy','B1','_107_1');
