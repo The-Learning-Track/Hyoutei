@@ -39,6 +39,7 @@ CREATE TABLE students
 	username VARCHAR(255) NOT NULL,
 	lastname VARCHAR(255) NOT NULL,
 	firstname VARCHAR(255) NOT NULL,
+	isInstructor BOOLEAN NOT NULL,
 	UNIQUE(username),
 	CONSTRAINT users_pk PRIMARY KEY (userid)
   );
@@ -78,36 +79,38 @@ CREATE TABLE grades
   );
 
 -- INSERT 30 Users
-INSERT INTO students (username, lastname, firstname) VALUES('test01','first01','last01'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test02','first02','last02'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test03','first03','last03'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test04','first04','last04'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test05','first05','last05'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test06','first06','last06'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test07','first07','last07'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test08','first08','last08'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test09','first09','last09'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test10','first10','last10'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test11','first11','last11'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test12','first12','last12'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test13','first13','last13'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test14','first14','last14'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test15','first15','last15'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test16','first16','last16'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test17','first17','last17'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test18','first18','last18'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test19','first19','last19'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test20','first20','last20'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test21','first21','last21'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test22','first22','last22'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test23','first23','last23'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test24','first24','last24'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test25','first25','last25'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test26','first26','last26'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test27','first27','last27'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test28','first28','last28'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test29','first29','last29'); 
-INSERT INTO students (username, lastname, firstname) VALUES('test30','first30','last30'); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test01','first01','last01',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test02','first02','last02',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test03','first03','last03',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test04','first04','last04',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test05','first05','last05',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test06','first06','last06',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test07','first07','last07',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test08','first08','last08',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test09','first09','last09',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test10','first10','last10',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test11','first11','last11',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test12','first12','last12',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test13','first13','last13',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test14','first14','last14',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test15','first15','last15',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test16','first16','last16',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test17','first17','last17',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test18','first18','last18',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test19','first19','last19',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test20','first20','last20',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test21','first21','last21',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test22','first22','last22',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test23','first23','last23',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test24','first24','last24',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test25','first25','last25',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test26','first26','last26',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test27','first27','last27',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test28','first28','last28',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test29','first29','last29',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test30','first30','last30',FALSE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('dicksonp','Dickson','Pun',TRUE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('kkawakam','Katsutoshi','Kawakami',TRUE); 
 
 -- Insert two courses
 INSERT INTO courses (coursename) VALUES('The Learning Track - Lecture Hall'); 
@@ -145,6 +148,8 @@ INSERT INTO studentsTakecourses (userid, courseid) VALUES(27,1);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(28,1);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(29,1);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(30,1);
+INSERT INTO studentsTakecourses (userid, courseid) VALUES(31,1);
+INSERT INTO studentsTakecourses (userid, courseid) VALUES(32,1);
 
 -- Insert 30 students into The Learning Track - Studio
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(1,2);
@@ -177,6 +182,8 @@ INSERT INTO studentsTakecourses (userid, courseid) VALUES(27,2);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(28,2);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(29,2);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(30,2);
+INSERT INTO studentsTakecourses (userid, courseid) VALUES(31,2);
+INSERT INTO studentsTakecourses (userid, courseid) VALUES(32,2);
 
 
 INSERT INTO columns (possiblepoints,assignmentname,catagory,courseid) VALUES(100.0,'Homework 1','Homework',1);
