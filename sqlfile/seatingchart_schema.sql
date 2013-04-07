@@ -14,15 +14,44 @@ CREATE TABLE students
 	username 	VARCHAR(255) NOT NULL,     
 	seatlocation 	VARCHAR(255) NOT NULL,
 	courseid 	VARCHAR(255) REFERENCES courses(courseid),
-	CONSTRAINT students_pk PRIMARY KEY(username)
+	UNIQUE(courseid, seatlocation),
+	CONSTRAINT students_pk PRIMARY KEY(username,courseid)
   );
 
 
 INSERT INTO courses (courseid)
-	VALUES('_107_1');
+	VALUES('1');
 INSERT INTO courses (courseid)
-	VALUES('_108_1');
+	VALUES('2');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('dicksonp','A1','_107_1');
+	VALUES('test01','A1','1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('realpxy','B1','_107_1');
+	VALUES('test02','A2','1');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test03','A3','1');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test04','A4','1');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test05','A5','1');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test06','A6','1');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test07','A7','1');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test08','A8','1');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test01','A1','2');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test02','A2','2');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test03','A3','2');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test04','A4','2');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test05','A5','2');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test06','A6','2');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test07','A7','2');
+INSERT INTO students (username,seatlocation,courseid)
+	VALUES('test08','A8','2');
