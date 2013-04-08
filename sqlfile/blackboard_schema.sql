@@ -111,6 +111,7 @@ INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test2
 INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test30','first30','last30',FALSE); 
 INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('dicksonp','Dickson','Pun',TRUE); 
 INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('kkawakam','Katsutoshi','Kawakami',TRUE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('jntullo','Jillian','Tullo',TRUE); 
 
 -- Insert two courses
 INSERT INTO courses (coursename) VALUES('The Learning Track - Lecture Hall'); 
@@ -150,6 +151,7 @@ INSERT INTO studentsTakecourses (userid, courseid) VALUES(29,1);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(30,1);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(31,1);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(32,1);
+INSERT INTO studentsTakecourses (userid, courseid) VALUES(33,1);
 
 -- Insert 30 students into The Learning Track - Studio
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(1,2);
@@ -184,6 +186,7 @@ INSERT INTO studentsTakecourses (userid, courseid) VALUES(29,2);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(30,2);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(31,2);
 INSERT INTO studentsTakecourses (userid, courseid) VALUES(32,2);
+INSERT INTO studentsTakecourses (userid, courseid) VALUES(33,2);
 
 
 INSERT INTO columns (possiblepoints,assignmentname,catagory,courseid) VALUES(100.0,'Homework 1','Homework',1);
