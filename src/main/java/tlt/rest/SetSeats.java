@@ -20,9 +20,6 @@ public class SetSeats {
 		public Successful_Seat_Login(boolean input){
 			this.setSuccess(input);
 		}
-		public boolean isSuccess() {
-			return success;
-		}
 		public void setSuccess(boolean success) {
 			this.success = success;
 		}
