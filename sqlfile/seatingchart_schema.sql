@@ -35,47 +35,47 @@ INSERT INTO students (username,seatlocation,courseid)
 
 	
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test11','A11','_107_1');
+	VALUES('test11','B1','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test12','A12','_107_1');
+	VALUES('test12','B2','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test13','A13','_107_1');
+	VALUES('test13','B3','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test14','A14','_107_1');
+	VALUES('test14','B4','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test15','A15','_107_1');
+	VALUES('test15','B5','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test16','A16','_107_1');
+	VALUES('test16','B6','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test17','A17','_107_1');
+	VALUES('test17','B7','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test18','A18','_107_1');
+	VALUES('test18','B8','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test19','A19','_107_1');
+	VALUES('test19','B9','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test20','A20','_107_1');
+	VALUES('test20','B10','_107_1');
 
 	
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test21','A21','_107_1');
+	VALUES('test21','C1','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test22','A22','_107_1');
+	VALUES('test22','C2','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test23','A23','_107_1');
+	VALUES('test23','C3','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test24','A24','_107_1');
+	VALUES('test24','C4','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test25','A25','_107_1');
+	VALUES('test25','C5','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test26','A26','_107_1');
+	VALUES('test26','C6','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test27','A27','_107_1');
+	VALUES('test27','C7','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test28','A28','_107_1');
+	VALUES('test28','C8','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test29','A29','_107_1');
+	VALUES('test29','C9','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test30','A30','_107_1');
+	VALUES('test30','C10','_107_1');
 
 	
 INSERT INTO students (username,seatlocation,courseid)
@@ -101,44 +101,44 @@ INSERT INTO students (username,seatlocation,courseid)
 
 	
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test11','A11','_108_1');
+	VALUES('test11','B1','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test12','A12','_108_1');
+	VALUES('test12','B2','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test13','A13','_108_1');
+	VALUES('test13','B3','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test14','A14','_108_1');
+	VALUES('test14','B4','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test15','A15','_108_1');
+	VALUES('test15','B5','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test16','A16','_108_1');
+	VALUES('test16','B6','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test17','A17','_108_1');
+	VALUES('test17','B7','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test18','A18','_108_1');
+	VALUES('test18','B8','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test19','A19','_108_1');
+	VALUES('test19','B9','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test20','A20','_108_1');
+	VALUES('test20','B10','_108_1');
 
 	
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test21','A21','_108_1');
+	VALUES('test21','C1','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test22','A22','_108_1');
+	VALUES('test22','C2','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test23','A23','_108_1');
+	VALUES('test23','C3','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test24','A24','_108_1');
+	VALUES('test24','C4','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test25','A25','_108_1');
+	VALUES('test25','C5','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test26','A26','_108_1');
+	VALUES('test26','C6','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test27','A27','_108_1');
+	VALUES('test27','C7','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test28','A28','_108_1');
+	VALUES('test28','C8','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test29','A29','_108_1');
+	VALUES('test29','C9','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test30','A30','_108_1');
+	VALUES('test30','C10','_108_1');
