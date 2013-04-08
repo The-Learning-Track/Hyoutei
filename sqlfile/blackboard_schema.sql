@@ -109,7 +109,7 @@ INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test2
 INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test28','first28','last28',FALSE); 
 INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test29','first29','last29',FALSE); 
 INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('test30','first30','last30',FALSE); 
-INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('dicksonp','Dickson','Pun',TRUE); 
+INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('dicksonp','Dickson','Pun',FALSE); 
 INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('kkawakam','Katsutoshi','Kawakami',TRUE); 
 INSERT INTO students (username, lastname, firstname, isInstructor) VALUES('jntullo','Jillian','Tullo',TRUE); 
 
