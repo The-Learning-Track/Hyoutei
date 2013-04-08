@@ -23,10 +23,5 @@
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 
-  <listener>
-  	<listener-class>
-  		tlt.startup.StartupServletContext
-  	</listener-class>
-  </listener>
 
 </web-app>

@@ -63,19 +63,19 @@ public class GetCourseGrades {
 				}
 
 				stmt = conn.prepareStatement(GET_STUDENT_INFO);
-				stmt.setString(1,courseId);
+				stmt.setInt(1,Integer.parseInt(courseId));
 				rs = stmt.executeQuery();
 				while(rs.next())
 					output.getStudentList().add(new JSONStudent(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
 				try { stmt.close(); } catch (SQLException e) { ; }
 				
 				stmt = conn.prepareStatement(GET_STUDENT_GRADES);
-				stmt.setString(1,courseId);
+				stmt.setInt(1,Integer.parseInt(courseId));
 				rs = stmt.executeQuery();
 				while(rs.next()){
 					String uid = rs.getString(3);
 					for(JSONStudent student: output.getStudentList())
-						if(uid == student.getStudentID())
+						if(uid.equals(student.getStudentID()))
 							student.getGradeList().add(new JSONgrades(rs.getString(2), rs.getDouble(1),uid));
 				}
 				

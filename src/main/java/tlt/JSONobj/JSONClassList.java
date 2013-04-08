@@ -1,5 +1,6 @@
 package tlt.JSONobj;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JSONClassList {
@@ -18,9 +19,10 @@ public class JSONClassList {
 	}
 	
 	public JSONClassList(){
-		this.setCourseIDs(null);
-		this.setCourseIDs(null);
-		this.setCourseNames(null);
+		this.courseIDs = new ArrayList<>();
+		this.courseNames = new ArrayList<>();
+		this.userID = null;
+		this.username = null;
 		this.isRegistered = false;
 	}
 

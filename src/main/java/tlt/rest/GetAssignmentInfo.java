@@ -48,10 +48,10 @@ public class GetAssignmentInfo {
         try {
             conn = DriverManager.getConnection(url, user, password);
 			stmt = conn.prepareStatement(GET_ASSIGNMENT_INFO);
-			stmt.setString(1,courseID);
+			stmt.setInt(1,Integer.parseInt(courseID));
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				output.getCourseInfo().add(new JSONAssignment(rs.getDouble(1), rs.getString(2), 
+				output.getCourseInfo().add(new JSONAssignment(rs.getDouble(1), Integer.toString(rs.getInt(2)), 
 						rs.getString(3), rs.getString(4)));
 
 			}
