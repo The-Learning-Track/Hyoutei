@@ -13,12 +13,20 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import tlt.JSONobj.JSONSeatList;
-
-
 @Path("/setSeats")
 public class SetSeats {
-
+	private class Successful_Seat_Login{
+		private boolean success;
+		public Successful_Seat_Login(boolean input){
+			this.setSuccess(input);
+		}
+		public boolean isSuccess() {
+			return success;
+		}
+		public void setSuccess(boolean success) {
+			this.success = success;
+		}
+	}
 	private static final String LOGIN_TO_SEAT = "INSERT INTO " +  "students (username, courseid, seatlocation) VALUES (?, ?, ?)";
 	
 	@javax.ws.rs.core.Context
@@ -27,7 +35,7 @@ public class SetSeats {
 	@GET
 	@Path("/{username}/{courseID}/{seatlocation}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public JSONSeatList getMsg(@PathParam("courseID") String courseID, @PathParam("username") String username,
+	public Successful_Seat_Login getMsg(@PathParam("courseID") String courseID, @PathParam("username") String username,
 			@PathParam("seatlocation") String seatlocation) {
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -35,7 +43,6 @@ public class SetSeats {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JSONSeatList output = new JSONSeatList();
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement stmt = null;
@@ -51,9 +58,10 @@ public class SetSeats {
 			stmt.setString(2,courseID);
 			stmt.setString(3,seatlocation);
 			stmt.executeUpdate();
+			return new Successful_Seat_Login(true);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException(e);
+			return new Successful_Seat_Login(false);
 		} finally {
 			if (rs != null) {
 				try { rs.close(); } catch (SQLException e) { ; }
@@ -68,9 +76,6 @@ public class SetSeats {
 				conn = null;
 			}
 		}
-
-		return output;
- 
 	}
  
 }
