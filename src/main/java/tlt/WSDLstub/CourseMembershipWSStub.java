@@ -12,7 +12,7 @@
         /*
         *  CourseMembershipWSStub java implementation
         */
-
+@SuppressWarnings("unchecked")
         
         public class CourseMembershipWSStub extends org.apache.axis2.client.Stub
         {

@@ -5,13 +5,15 @@ import java.util.List;
 public class JSONStudent {
 	private String lastName;
 	private String firstName;
-	private String userID;
+	private String studentID;
+	private String username;
 	private List<JSONgrades> gradeList;
 	
-	public JSONStudent(String lastName, String firstName, String userID){
+	public JSONStudent(String lastName, String firstName, String userID, String username){
 		this.lastName = lastName;
 		this.firstName = firstName;
-		this.userID = userID;
+		this.studentID = userID;
+		this.username = username;
 		this.gradeList = null;
 	}
 	
@@ -22,10 +24,10 @@ public class JSONStudent {
 		this.gradeList = gradeList;
 	}
 	public String getStudentID() {
-		return userID;
+		return studentID;
 	}
 	public void setStudentID(String studentID) {
-		this.userID = studentID;
+		this.studentID = studentID;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -38,5 +40,13 @@ public class JSONStudent {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }
