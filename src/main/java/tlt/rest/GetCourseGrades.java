@@ -16,7 +16,7 @@ public class GetCourseGrades {
 		ServletContext context;
 		
 		@GET
-		@Path("/{courseId}/{userID}")
+		@Path("/{userID}/{courseId}")
 		@Produces(MediaType.APPLICATION_JSON)
 		public JSONStudentList getMsg(@PathParam("courseId") String courseId,
 										@PathParam("userID") String username) {
