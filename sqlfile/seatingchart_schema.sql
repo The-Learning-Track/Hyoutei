@@ -71,11 +71,11 @@ INSERT INTO students (username,seatlocation,courseid)
 INSERT INTO students (username,seatlocation,courseid)
 	VALUES('test27','C7','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test28','C8','_107_1');
+	VALUES('jntullo','C8','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test29','C9','_107_1');
+	VALUES('dicksonp','C9','_107_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test30','C10','_107_1');
+	VALUES('realpxy','C10','_107_1');
 
 	
 INSERT INTO students (username,seatlocation,courseid)
@@ -137,8 +137,8 @@ INSERT INTO students (username,seatlocation,courseid)
 INSERT INTO students (username,seatlocation,courseid)
 	VALUES('test27','C7','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test28','C8','_108_1');
+	VALUES('jntullo','C8','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test29','C9','_108_1');
+	VALUES('dicksonp','C9','_108_1');
 INSERT INTO students (username,seatlocation,courseid)
-	VALUES('test30','C10','_108_1');
+	VALUES('realpxy','C10','_108_1');
