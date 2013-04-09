@@ -13,11 +13,22 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import tlt.JSONobj.JSONSeatList;
 
 @Path("/clearSeats")
 public class ClearSeats {
-
+	private class Successful_Seat_Login{
+		private boolean success;
+		public Successful_Seat_Login(boolean input){
+			this.setSuccess(input);
+		}
+		@SuppressWarnings("unused")
+		public boolean isSuccess() {
+			return success;
+		}
+		public void setSuccess(boolean success) {
+			this.success = success;
+		}
+	}
 private static final String CLEAR_ALL_SEAT = "DELETE FROM students WHERE courseid = ?";
 	
 	@javax.ws.rs.core.Context
@@ -26,14 +37,13 @@ private static final String CLEAR_ALL_SEAT = "DELETE FROM students WHERE coursei
 	@GET
 	@Path("/{courseID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public JSONSeatList getMsg(@PathParam("courseID") String courseID) {
+	public Successful_Seat_Login getMsg(@PathParam("courseID") String courseID) {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JSONSeatList output = new JSONSeatList();
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement stmt = null;
@@ -47,9 +57,10 @@ private static final String CLEAR_ALL_SEAT = "DELETE FROM students WHERE coursei
 			stmt = conn.prepareStatement(CLEAR_ALL_SEAT);
 			stmt.setString(1,courseID);
 			stmt.executeUpdate();
+			return new Successful_Seat_Login(true);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException(e);
+			return new Successful_Seat_Login(false);
 		} finally {
 			if (rs != null) {
 				try { rs.close(); } catch (SQLException e) { ; }
@@ -64,8 +75,5 @@ private static final String CLEAR_ALL_SEAT = "DELETE FROM students WHERE coursei
 				conn = null;
 			}
 		}
-
-		return output;
- 
-	}
+ 	}
 }
