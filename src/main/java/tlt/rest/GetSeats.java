@@ -14,6 +14,19 @@ import tlt.JSONobj.JSONSeatList;
 
 @Path("/getSeats")
 public class GetSeats {
+	private class Successful_Seat_Login{
+		private boolean success;
+		public Successful_Seat_Login(boolean input){
+			this.setSuccess(input);
+		}
+		@SuppressWarnings("unused")
+		public boolean isSuccess() {
+			return success;
+		}
+		public void setSuccess(boolean success) {
+			this.success = success;
+		}
+	}
 	private static final String SEAT_LOCATIONS_FOR_COURSE = "SELECT seatlocation, username FROM students WHERE courseid = ?";
 	
 	
@@ -23,7 +36,7 @@ public class GetSeats {
 	@GET
 	@Path("/{param}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public JSONSeatList getMsg(@PathParam("param") String courseID) {
+	public Successful_Seat_Login getMsg(@PathParam("param") String courseID) {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
@@ -48,10 +61,11 @@ public class GetSeats {
 				output.getSeatLocation().add(rs.getString("seatlocation"));
 				output.getUsernames().add(rs.getString("username"));
 			}
+			return new Successful_Seat_Login(true);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException(e);
+			return new Successful_Seat_Login(false);
 		} finally {
 			if (rs != null) {
 				try { rs.close(); } catch (SQLException e) { ; }
@@ -66,8 +80,6 @@ public class GetSeats {
 				conn = null;
 			}
 		}
-
-		return output;
  
 	}
  
