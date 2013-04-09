@@ -29,6 +29,10 @@ public class SetSeats {
 		}
 	}
 	private static final String LOGIN_TO_SEAT = "INSERT INTO " +  "students (username, courseid, seatlocation) VALUES (?, ?, ?)";
+	private static final String COUNT_SEATS_USER = "SELECT count(*) FROM students WHERE username = ? AND courseid = ?";
+	private static final String COUNT_SEATS_LOCATION = "SELECT count(*) FROM students WHERE seatlocation = ? AND courseid = ?";
+	private static final String DELETE_FROM_SEAT = "DELETE FROM students WHERE username = ? AND courseid = ? ";
+	
 	
 	@javax.ws.rs.core.Context
 	ServletContext context;
@@ -51,9 +55,47 @@ public class SetSeats {
         String url = "jdbc:postgresql://localhost:5432/seatingchart";
         String user = "thelearningtrack";
         String password = "testtrack";
+        boolean invalidSeat = false;
+        boolean isAlreadySeated = false;
 
         try {
-            conn = DriverManager.getConnection(url, user, password);
+        	conn = DriverManager.getConnection(url, user, password); // Setup connection to database
+        	/* 1. Check if the seat choice is a valid choice */
+			stmt = conn.prepareStatement(COUNT_SEATS_LOCATION);
+			stmt.setString(1,seatlocation);
+			stmt.setString(2,courseID);
+			rs = stmt.executeQuery();
+			if(rs.next())
+				invalidSeat = rs.getInt(1) > 0;
+			else
+				return new Successful_Seat_Login(false);
+			try { stmt.close(); } catch (SQLException e) { ; } //Close Prepared Statement
+        	
+			if(invalidSeat)
+				return new Successful_Seat_Login(false);
+			
+        	/* 2. Check if user is logged into another seat */
+			stmt = conn.prepareStatement(COUNT_SEATS_USER);
+			stmt.setString(1,username);
+			stmt.setString(2,courseID);
+			rs = stmt.executeQuery();
+			if(rs.next())
+				isAlreadySeated = rs.getInt(1) > 0;
+			else
+				return new Successful_Seat_Login(false);
+			try { stmt.close(); } catch (SQLException e) { ; } //Close Prepared Statement
+        	
+			/* 3. If user is already seated, delete him from previous seat */
+			if(isAlreadySeated)
+			{
+				stmt = conn.prepareStatement(DELETE_FROM_SEAT);
+				stmt.setString(1,username);
+				stmt.setString(2,courseID);
+				stmt.executeUpdate();
+				try { stmt.close(); } catch (SQLException e) { ; }
+			}
+
+        	/* 4. Enter into seat */
 			stmt = conn.prepareStatement(LOGIN_TO_SEAT);
 			stmt.setString(1,username);
 			stmt.setString(2,courseID);
